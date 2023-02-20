@@ -1,0 +1,15 @@
+{
+  "baseURL": "https://parabank.parasoft.com/",
+  "registerURL": "parabank/register.htm",
+  "firstName": "Vladimir",
+  "lastName": "Dimov",
+  "address": "Sofia",
+  "city": "Sofia",
+  "state": "Sofia",
+  "zipCode": "12345",
+  "phone": "12345",
+  "ssn": "12345",
+  "username": "papagal",
+  "password": "test123",
+  "confirmPW": "test123"
+}
