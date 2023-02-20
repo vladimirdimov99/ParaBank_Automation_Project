@@ -1,4 +1,4 @@
-package helpers;
+package com.java_parabank_demo.helpers;
 
 public class JsonParser {
 

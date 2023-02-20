@@ -1,0 +1,9 @@
+{
+  "baseURL": "https://parabank.parasoft.com/parabank/index.htm",
+  "loginUrl": "",
+  "registerUrl": "",
+  "userIdURL" : "",
+  "email": "",
+  "password": "",
+  "name": ""
+}
