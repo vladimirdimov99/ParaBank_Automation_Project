@@ -1,4 +1,4 @@
-package helpers;
+package com.java_parabank_demo.helpers;
 
 public class JsonParser {
 
@@ -34,4 +34,23 @@ public class JsonParser {
         return message;
     }
 
+    public static String getUserID(String in) {
+        String[] json = in.split(",");
+        String data = json[2];
+        data = data.replace("{", "");
+        String[] key = data.split(":");
+        String value = key[2];
+        String userID = value.replace("\"", "");
+        return userID;
+    }
+
+    public static String getName(String in) {
+        String[] json = in.split(",");
+        String data = json[3];
+        data = data.replace("{", "");
+        String[] key = data.split(":");
+        String value = key[1];
+        String name = value.replace("\"", "");
+        return name;
+    }
 }
