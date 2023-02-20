@@ -1,4 +1,4 @@
-package com.java_parabank_demo.api;
+package api;
 
 import java.io.BufferedReader;
 import java.io.IOException;
