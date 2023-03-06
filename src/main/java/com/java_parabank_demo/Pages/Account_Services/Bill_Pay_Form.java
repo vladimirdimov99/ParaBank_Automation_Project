@@ -19,13 +19,15 @@ public class Bill_Pay_Form {
     By amountFieldLocator = By.name("amount");
     By fromAccountDropMenuLocator = By.name("fromAccountId");
     By sendPaymentSubmitButton = By.cssSelector("button[type='submit']");
+    By fromAccountDropMenuFirstAccount = By.xpath("//*[@id='rightPanel']/div/div[1]/form/table/tbody/tr[13]/td[2]/select/option[1]");
+    By fromAccountDropMenuSecondAccount = By.xpath("//*[@id='rightPanel']/div/div[1]/form/table/tbody/tr[13]/td[2]/select/option[2]");
 
     public void GoToTheAccountsOverviewForm(){
         driver.findElement(billPayButton).click();
         // Accounts Overview Form is displayed with all of the user's accounts and his Balance and Available Amount
     }
 
-    public void EnterPayeeInformationAndClickSendPaymentButton(){
+    public void PayABillWithTheSecondAccount(){
         driver.findElement(payeeNameFieldLocator).click();
         driver.findElement(payeeNameFieldLocator).sendKeys();
 
@@ -54,7 +56,7 @@ public class Bill_Pay_Form {
         driver.findElement(amountFieldLocator).sendKeys();
 
         driver.findElement(fromAccountDropMenuLocator).click();
-        // TO DO!!!!
+        driver.findElement(fromAccountDropMenuSecondAccount).click();
 
         driver.findElement(sendPaymentSubmitButton).click();
     }
