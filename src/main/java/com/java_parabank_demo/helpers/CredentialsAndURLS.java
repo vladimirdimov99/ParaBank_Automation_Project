@@ -1,5 +1,6 @@
 package com.java_parabank_demo.helpers;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.junit.Test;
@@ -7,6 +8,8 @@ import org.junit.Test;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CredentialsAndURLS {
 
@@ -26,7 +29,8 @@ public class CredentialsAndURLS {
 
     public static void credentialsAndURLS() throws IOException, ParseException, org.json.simple.parser.ParseException {
         JSONParser jsonparser = new JSONParser();
-        FileReader reader = new FileReader("C:/Users/Samuil/Desktop/Parabank/java_parabank_demo/src/main/java/com/java_parabank_demo/config/config.json");
+        FileReader reader = new FileReader("C:/Users/Samuil/Desktop/Parabank/java_parabank_demo/src/main/java" +
+                "/com/java_parabank_demo/config/config.json");
         Object object = jsonparser.parse(reader);
         JSONObject configJsonObj = (JSONObject) object;
 
