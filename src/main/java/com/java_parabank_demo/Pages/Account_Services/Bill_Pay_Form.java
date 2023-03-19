@@ -18,7 +18,7 @@ public class Bill_Pay_Form {
     By verifyAccountFieldLocator = By.name("verifyAccount");
     By amountFieldLocator = By.name("amount");
     By fromAccountDropMenuLocator = By.name("fromAccountId");
-    By sendPaymentSubmitButton = By.cssSelector("button[type='submit']");
+    By sendPaymentSubmitButton = By.cssSelector("input[type='submit']");
     By fromAccountDropMenuFirstAccount = By.xpath("//*[@id='rightPanel']/div/div[1]/form/table/tbody/tr[13]/td[2]/select/option[1]");
     By fromAccountDropMenuSecondAccount = By.xpath("//*[@id='rightPanel']/div/div[1]/form/table/tbody/tr[13]/td[2]/select/option[2]");
 

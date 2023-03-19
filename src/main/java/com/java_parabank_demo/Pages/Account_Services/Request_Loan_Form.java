@@ -11,7 +11,7 @@ public class Request_Loan_Form {
     By loanAmountFieldLocator = By.id("amount");
     By downPaymentFieldLocator = By.id("downPayment");
     By fromAccountDropMenuLocator = By.id("fromAccountId");
-    By applyNowSubmitButton = By.cssSelector("button[type='submit']");
+    By applyNowSubmitButton = By.cssSelector("input[type='submit']");
     By fromAccountDropMenuFirstAccount = By.xpath("//*[@id='fromAccountId']/option[1]");
     By fromAccountDropMenuSecondAccount = By.xpath("//*[@id='fromAccountId']/option[2]");
 

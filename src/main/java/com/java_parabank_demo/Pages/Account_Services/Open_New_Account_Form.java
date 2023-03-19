@@ -10,7 +10,7 @@ public class Open_New_Account_Form {
     By openNewAccountButton = By.linkText("Open New Account");
     By accountTypeDropMenuLocator = By.id("type");
     By selectAccountDropMenuLocator = By.id("fromAccountId");
-    By openNewAccountSubmitButton = By.cssSelector("button[type='submit']");
+    By openNewAccountSubmitButton = By.cssSelector("input[type='submit']");
     By selectCheckingAccount = By.xpath("//*[@id='type']/option[1]");
     By selectSavingsAccount = By.xpath("//*[@id='type']/option[2]");
     By selectTheFirstAccount = By.xpath("//*[@id='fromAccountId']/option[1]");

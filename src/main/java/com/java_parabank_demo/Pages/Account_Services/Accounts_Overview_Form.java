@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 
 public class Accounts_Overview_Form {
     WebDriver driver;
-
     public Accounts_Overview_Form (WebDriver driver) {this.driver = driver;}
+
     By accountsOverviewButton = By.linkText("Accounts Overview");
 
     public void GoToTheAccountsOverviewForm(){

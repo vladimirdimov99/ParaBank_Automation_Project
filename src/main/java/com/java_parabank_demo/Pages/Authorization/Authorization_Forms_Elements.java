@@ -19,7 +19,7 @@ public class Authorization_Forms_Elements {
     public By SSNField= By.id("customer.ssn");
     public By userNameField= By.id("customer.username");
     public By setPasswordField= By.id("customer.password");
-    public By confirmPWField= By.id("repeatedPassword]");
+    public By confirmPWField= By.id("repeatedPassword");
     public By registerButton= By.xpath("//input[@value='Register']]");
 
 }

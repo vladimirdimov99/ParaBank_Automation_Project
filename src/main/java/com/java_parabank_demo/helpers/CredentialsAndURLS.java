@@ -19,6 +19,7 @@ public class CredentialsAndURLS {
     private static String firstName;
     private static String lastName;
     private static String address;
+    private static String city;
     private static String state;
     private static String zipCode;
     private static String phone;
@@ -29,17 +30,16 @@ public class CredentialsAndURLS {
 
     public static void credentialsAndURLS() throws IOException, ParseException, org.json.simple.parser.ParseException {
         JSONParser jsonparser = new JSONParser();
-        FileReader reader = new FileReader("C:/Users/Samuil/Desktop/Parabank/java_parabank_demo/src/main/java" +
-                "/com/java_parabank_demo/config/config.json");
+        FileReader reader = new FileReader("C:/Users/Vladimir/IdeaProjects/java_parabank_demo/src/main/java/com/java_parabank_demo/config/config.json");
         Object object = jsonparser.parse(reader);
         JSONObject configJsonObj = (JSONObject) object;
 
         baseURL = (String) configJsonObj.get("baseURL");
         registerURL = (String) configJsonObj.get("registerURL");
-       // users = (String) configJsonObj.get("users"); //TODO
         firstName = (String) configJsonObj.get("name");
         lastName = (String) configJsonObj.get("lastName");
         address = (String) configJsonObj.get("address");
+        city = (String) configJsonObj.get("city");
         state = (String) configJsonObj.get("state");
         zipCode = (String) configJsonObj.get("zipcode");
         phone = (String) configJsonObj.get("phone");
@@ -47,7 +47,6 @@ public class CredentialsAndURLS {
         username = (String) configJsonObj.get("username");
         password = (String) configJsonObj.get("password");
         confirmPW = (String) configJsonObj.get("confirmPW");
-       // confirmPW = configJsonObj.get("confirmPW").toString();
     }
 
     public void setBaseURL(String baseURL) {
@@ -97,6 +96,10 @@ public class CredentialsAndURLS {
     public static String getAddress() {
         return address;
     }
+
+    public void setCity(String city) {this.city = city;}
+
+    public static String getCity() {return city;}
 
     public void setState(String state) {
         this.state = state;
@@ -152,13 +155,5 @@ public class CredentialsAndURLS {
 
     public static String getConfirmPW() {
         return confirmPW;
-    }
-
-    @Test
-    public void test() throws IOException, ParseException, org.json.simple.parser.ParseException {
-        credentialsAndURLS();
-        System.out.println(baseURL);
-        System.out.println(registerURL);
-
     }
 }
