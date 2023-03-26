@@ -1,10 +1,10 @@
-package com.java_parabank_demo.Tests;
+package com.java_parabank_demo.Tests.Authorization_Tests;
 
 import com.java_parabank_demo.Pages.Authorization.Sign_Up_Form;
 import com.java_parabank_demo.Pages.LoadTheWebsite;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -27,15 +27,17 @@ public class RegisterToTheWebsite {
     private static String zipCode = "12345";
     private static String phone = "12345";
     private static String ssn = "12345";
-    private static String username = "papagala36";
+    private static String username = "papagala10";
     private static String password = "test123";
     private static String confirmPW = "test123";
     Duration timeout = Duration.ofSeconds(3);
-    By registrationSection = By.className("form2");
 
     @BeforeTest
     public void OpenTheWebsite(){
-        driver = new ChromeDriver();
+        ChromeOptions option = new ChromeOptions();
+        option.addArguments("--remote-allow-origins=*");
+
+        driver = new ChromeDriver(option);
         new LoadTheWebsite().LoadTheWebsite(driver);
     }
 
@@ -66,6 +68,6 @@ public class RegisterToTheWebsite {
         Assert.assertTrue(welcomeMessage.contains(username));
     }
 
-    @AfterTest
-    public void closeTheWebsite() {driver.quit();}
+//    @AfterTest
+//    public void closeTheWebsite() {driver.quit();}
 }
