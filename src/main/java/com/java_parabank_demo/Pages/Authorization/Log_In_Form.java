@@ -19,5 +19,7 @@ public class Log_In_Form {
 
         driver.findElement(passwordLogInField).click();
         driver.findElement(passwordLogInField).sendKeys(password);
+
+        driver.findElement(loginSubmitButton).click();
     }
 }

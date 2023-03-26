@@ -1,4 +1,4 @@
-package com.java_parabank_demo.Tests.Authorization_Tests;
+package com.java_parabank_demo.Tests.Authorization_Tests.Sign_Up_Tests;
 
 import com.java_parabank_demo.Pages.Authorization.Sign_Up_Form;
 import com.java_parabank_demo.Pages.LoadTheWebsite;
@@ -27,7 +27,7 @@ public class RegisterToTheWebsite {
     private static String zipCode = "12345";
     private static String phone = "12345";
     private static String ssn = "12345";
-    private static String username = "papagala10";
+    private static String username = "papagala27";
     private static String password = "test123";
     private static String confirmPW = "test123";
     Duration timeout = Duration.ofSeconds(3);
@@ -68,6 +68,6 @@ public class RegisterToTheWebsite {
         Assert.assertTrue(welcomeMessage.contains(username));
     }
 
-//    @AfterTest
-//    public void closeTheWebsite() {driver.quit();}
+    @AfterTest
+    public void closeTheWebsite() {driver.quit();}
 }

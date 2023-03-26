@@ -11,9 +11,13 @@ public class Request_Loan_Form {
     By loanAmountFieldLocator = By.id("amount");
     By downPaymentFieldLocator = By.id("downPayment");
     By fromAccountDropMenuLocator = By.id("fromAccountId");
-    By applyNowSubmitButton = By.cssSelector("input[type='submit']");
+    By applyNowSubmitButton = By.cssSelector("input[value='Apply Now']");
     By fromAccountDropMenuFirstAccount = By.xpath("//*[@id='fromAccountId']/option[1]");
     By fromAccountDropMenuSecondAccount = By.xpath("//*[@id='fromAccountId']/option[2]");
+    public By loanStatus = By.id("loanStatus");
+
+    public By requestLoanForm = By.className("ng-scope");
+    public By requestLoanTitle = By.className("title");
 
     public void GoToTheRequestLoanForm(){
         driver.findElement(requestLoanButton).click();
@@ -22,10 +26,10 @@ public class Request_Loan_Form {
 
     public void EnterCredentialsAndApplyForLoanFromFirstAccount(){
         driver.findElement(loanAmountFieldLocator).click();
-        driver.findElement(loanAmountFieldLocator).sendKeys();
+        driver.findElement(loanAmountFieldLocator).sendKeys("100");
 
         driver.findElement(downPaymentFieldLocator).click();
-        driver.findElement(downPaymentFieldLocator).sendKeys();
+        driver.findElement(downPaymentFieldLocator).sendKeys("110");
 
         driver.findElement(fromAccountDropMenuLocator).click();
         driver.findElement(fromAccountDropMenuFirstAccount).click();

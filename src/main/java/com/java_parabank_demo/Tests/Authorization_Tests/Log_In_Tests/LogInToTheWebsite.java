@@ -1,4 +1,4 @@
-package com.java_parabank_demo.Tests.Authorization_Tests;
+package com.java_parabank_demo.Tests.Authorization_Tests.Log_In_Tests;
 
 import com.java_parabank_demo.Pages.Authorization.Log_In_Form;
 import com.java_parabank_demo.Pages.LoadTheWebsite;

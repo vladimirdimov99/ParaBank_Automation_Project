@@ -2,6 +2,7 @@ package com.java_parabank_demo.Pages.Account_Services;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Open_New_Account_Form {
     WebDriver driver;
@@ -13,12 +14,20 @@ public class Open_New_Account_Form {
     By openNewAccountSubmitButton = By.cssSelector("input[type='submit']");
     By selectCheckingAccount = By.xpath("//*[@id='type']/option[1]");
     By selectSavingsAccount = By.xpath("//*[@id='type']/option[2]");
-    By selectTheFirstAccount = By.xpath("//*[@id='fromAccountId']/option[1]");
-    By selectTheSecondAccount = By.xpath("//*[@id='fromAccountId']/option[2]");
+
+    public By selectTheFirstAccount = By.xpath("//*[@id='fromAccountId']/option[1]");
+    public By selectTheSecondAccount = By.xpath("//*[@id='fromAccountId']/option[2]");
+    public By openNewAccountTitle = By.className("title");
+    public By openNewAccountForm = By.className("ng-scope");
 
     public void GoToTheOpenNewAccountForm(){
         driver.findElement(openNewAccountButton).click();
         // Open New Account Form is displayed
+    }
+
+    public void OpenNewCheckingAccount(){
+        driver.findElement(accountTypeDropMenuLocator).click();
+        driver.findElement(selectCheckingAccount).click();
     }
 
     public void OpenNewCheckingAccountAndDepositFromSecondAccount(){
@@ -27,8 +36,6 @@ public class Open_New_Account_Form {
 
         driver.findElement(selectAccountDropMenuLocator).click();
         driver.findElement(selectTheSecondAccount).click();
-
-        driver.findElement(openNewAccountButton).click();
     }
 
     public void OpenNewSavingsAccountAndDepositFromFirstAccount(){
@@ -37,8 +44,9 @@ public class Open_New_Account_Form {
 
         driver.findElement(selectAccountDropMenuLocator).click();
         driver.findElement(selectTheFirstAccount).click();
-
-        driver.findElement(openNewAccountSubmitButton).click();
     }
 
+    public void ClickOnTheOpenNewAccountButton(){
+        driver.findElement(openNewAccountSubmitButton).click();
+    }
 }
