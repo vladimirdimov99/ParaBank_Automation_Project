@@ -54,7 +54,7 @@ public class Request_Loan_After_Registering {
         Sign_Up_Form sign_up_form = new Sign_Up_Form(driver);
         sign_up_form.GoToTheSignUpForm();
 
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(sign_up_form.signUpForm));
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(sign_up_form.signUpTitle));
         String signingUpIsEasyText = driver.findElement(sign_up_form.signUpTitle).getText();
         Assert.assertEquals(signingUpIsEasyText, "Signing up is easy!");
     }
@@ -63,8 +63,7 @@ public class Request_Loan_After_Registering {
     public void SignUpToTheWebsite(){
         Sign_Up_Form sign_up_form = new Sign_Up_Form(driver);
         sign_up_form.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
-
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(sign_up_form.signUpTitle));
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(sign_up_form.signUpTitle));
         String welcomeMessage = driver.findElement(sign_up_form.signUpTitle).getText();
         Assert.assertTrue(welcomeMessage.contains(username));
     }
@@ -73,7 +72,7 @@ public class Request_Loan_After_Registering {
     public void GoToTheRequestLoanForm(){
         Request_Loan_Form request_loan_form = new Request_Loan_Form(driver);
         request_loan_form.GoToTheRequestLoanForm();
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(request_loan_form.requestLoanForm));
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(request_loan_form.requestLoanTitle));
         String requestLoanTitle = driver.findElement(request_loan_form.requestLoanTitle).getText();
         Assert.assertEquals(requestLoanTitle, "Apply for a Loan");
     }
@@ -82,7 +81,7 @@ public class Request_Loan_After_Registering {
     public void RequestLoanFromFirstAccount(){
         Request_Loan_Form request_loan_form = new Request_Loan_Form(driver);
         request_loan_form.EnterCredentialsAndApplyForLoanFromFirstAccount();
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(request_loan_form.requestLoanForm));
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(request_loan_form.loanStatus));
         String loanMessage = driver.findElement(request_loan_form.loanStatus).getText();
         Assert.assertEquals(loanMessage, "Approved");
     }

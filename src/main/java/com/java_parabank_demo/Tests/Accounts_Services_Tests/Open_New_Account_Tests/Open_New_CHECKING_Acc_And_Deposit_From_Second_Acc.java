@@ -56,7 +56,7 @@ public class Open_New_CHECKING_Acc_And_Deposit_From_Second_Acc {
         Log_In_Form log_in_form = new Log_In_Form(driver);
         log_in_form.LogInToTheWebsite(username, password);
 
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(log_in_form.leftPanelLocator));
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(log_in_form.welcomeMessageTextLocator));
         String welcomeLogInMessage = driver.findElement(log_in_form.welcomeMessageTextLocator).getText();
         Assert.assertTrue(welcomeLogInMessage.contains(firstName + lastName));
     }
@@ -66,7 +66,7 @@ public class Open_New_CHECKING_Acc_And_Deposit_From_Second_Acc {
         Open_New_Account_Form open_new_account_form = new Open_New_Account_Form(driver);
         open_new_account_form.GoToTheOpenNewAccountForm();
 
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(open_new_account_form.openNewAccountForm));
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.openNewAccountTitle));
         openNewAccountTitle = driver.findElement(open_new_account_form.openNewAccountTitle).getText();
         Assert.assertEquals(openNewAccountTitle, "Open New Account");
     }
@@ -78,7 +78,7 @@ public class Open_New_CHECKING_Acc_And_Deposit_From_Second_Acc {
         new WebDriverWait(driver, timeout).until(ExpectedConditions.elementToBeSelected(open_new_account_form.selectTheSecondAccount));
         open_new_account_form.ClickOnTheOpenNewAccountButton();
 
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(open_new_account_form.openNewAccountForm));
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.openNewAccountTitle));
         openNewAccountTitle = driver.findElement(open_new_account_form.openNewAccountTitle).getText();
         Assert.assertEquals(openNewAccountTitle, "Account Opened!");
     }

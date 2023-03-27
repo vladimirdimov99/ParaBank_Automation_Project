@@ -29,7 +29,7 @@ public class Check_The_First_Acc_Details_And_Activity_After_Registering {
     private static String zipCode = "12345";
     private static String phone = "12345";
     private static String ssn = "12345";
-    private static String username = "papagala51";
+    private static String username = "papagala53";
     private static String password = "test123";
     private static String confirmPW = "test123";
     Duration timeout = Duration.ofSeconds(3);
@@ -81,18 +81,15 @@ public class Check_The_First_Acc_Details_And_Activity_After_Registering {
     }
 
     @Test(priority = 5)
-    public void SelectTheFirstAccAndCheckDetails(){
+    public void SelectTheFirstAccAndCheckDetails() throws InterruptedException {
         //The First Account type after registering should be a CHECKING Account
         Accounts_Overview_Form accounts_overview_form = new Accounts_Overview_Form(driver);
         new WebDriverWait(driver, timeout).until(ExpectedConditions.elementToBeClickable(accounts_overview_form.firstAccount));
         accounts_overview_form.SelectTheFirstAccount();
 
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(accounts_overview_form.accountDetailsForm));
-        accountsOverviewTitle = driver.findElement(accounts_overview_form.accountsOverviewTitle).getText();
-        Assert.assertEquals(accountsOverviewTitle, "Account Details");
-        // TO BE DISCUSSED
-//        String accountType = driver.findElement(accounts_overview_form.accountType).getText();
-//        Assert.assertEquals(accountType, "CHECKING");
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(accounts_overview_form.accountType));
+        String accountType = driver.findElement(accounts_overview_form.accountType).getText();
+        Assert.assertEquals(accountType, "CHECKING");
     }
 
     @Test(priority = 6)
@@ -102,9 +99,9 @@ public class Check_The_First_Acc_Details_And_Activity_After_Registering {
 
         Accounts_Overview_Form accounts_overview_form = new Accounts_Overview_Form(driver);
         accounts_overview_form.CheckAccountActivity();
-         //TO BE DISCUSSED
-//        String transactionActivityMessage = driver.findElement(accounts_overview_form.transactionActivityMessage).getText();
-//        Assert.assertEquals(transactionActivityMessage, "No transactions found.");
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(accounts_overview_form.transactionActivityMessage));
+        String transactionActivityMessage = driver.findElement(accounts_overview_form.transactionActivityMessage).getText();
+        Assert.assertEquals(transactionActivityMessage, "No transactions found.");
     }
 
     @AfterTest

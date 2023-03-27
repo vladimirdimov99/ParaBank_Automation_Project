@@ -55,7 +55,7 @@ public class Open_New_SAVINGS_Acc_And_Deposit_From_First_Acc {
         Sign_Up_Form sign_up_form = new Sign_Up_Form(driver);
         sign_up_form.GoToTheSignUpForm();
 
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(sign_up_form.signUpForm));
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(sign_up_form.signUpTitle));
         String signingUpIsEasyText = driver.findElement(sign_up_form.signUpTitle).getText();
         Assert.assertEquals(signingUpIsEasyText, "Signing up is easy!");
     }
@@ -65,7 +65,7 @@ public class Open_New_SAVINGS_Acc_And_Deposit_From_First_Acc {
         Sign_Up_Form sign_up_form = new Sign_Up_Form(driver);
         sign_up_form.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
 
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(sign_up_form.signUpTitle));
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(sign_up_form.signUpTitle));
         String welcomeMessage = driver.findElement(sign_up_form.signUpTitle).getText();
         Assert.assertTrue(welcomeMessage.contains(username));
     }
@@ -75,7 +75,7 @@ public class Open_New_SAVINGS_Acc_And_Deposit_From_First_Acc {
         Open_New_Account_Form open_new_account_form = new Open_New_Account_Form(driver);
         open_new_account_form.GoToTheOpenNewAccountForm();
 
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(open_new_account_form.openNewAccountForm));
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.openNewAccountTitle));
         openNewAccountTitle = driver.findElement(open_new_account_form.openNewAccountTitle).getText();
         Assert.assertEquals(openNewAccountTitle, "Open New Account");
     }
@@ -87,7 +87,7 @@ public class Open_New_SAVINGS_Acc_And_Deposit_From_First_Acc {
         new WebDriverWait(driver, timeout).until(ExpectedConditions.elementToBeSelected(open_new_account_form.selectTheFirstAccount));
         open_new_account_form.ClickOnTheOpenNewAccountButton();
 
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(open_new_account_form.openNewAccountForm));
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.openNewAccountTitle));
         openNewAccountTitle= driver.findElement(open_new_account_form.openNewAccountTitle).getText();
         Assert.assertEquals(openNewAccountTitle, "Account Opened!");
     }

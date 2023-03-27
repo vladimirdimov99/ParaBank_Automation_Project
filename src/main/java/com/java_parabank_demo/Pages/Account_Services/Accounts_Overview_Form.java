@@ -11,11 +11,11 @@ public class Accounts_Overview_Form {
     By accountActivityGoButton = By.cssSelector("input[value='Go']");
 
     public By firstAccount = By.xpath("//*[@id='accountTable']/tbody/tr[1]/td[1]/a");
-    public By accountsOverviewTitle = By.className("title");
+    public By accountsOverviewTitle = By.xpath("//*[@id='rightPanel']/div/div/h1[1]");
     public By accountsOverviewForm = By.className("ng-scope");
     public By accountDetailsForm = By.id("rightPanel");
     public By accountType = By.id("accountType");
-    public By transactionActivityMessage = By.xpath("//*[text()='No transactions found.']");
+    public By transactionActivityMessage = By.xpath("//*[@ng-if='showActivity']/p");
 
 
     public void GoToTheAccountsOverviewForm(){

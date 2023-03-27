@@ -56,7 +56,7 @@ public class Transfer_Funds_From_The_Same_Acc {
         Sign_Up_Form sign_up_form = new Sign_Up_Form(driver);
         sign_up_form.GoToTheSignUpForm();
 
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(sign_up_form.signUpForm));
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(sign_up_form.signUpTitle));
         String signingUpIsEasyText = driver.findElement(sign_up_form.signUpTitle).getText();
         Assert.assertEquals(signingUpIsEasyText, "Signing up is easy!");
     }
@@ -66,7 +66,7 @@ public class Transfer_Funds_From_The_Same_Acc {
         Sign_Up_Form sign_up_form = new Sign_Up_Form(driver);
         sign_up_form.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
 
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(sign_up_form.signUpTitle));
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(sign_up_form.signUpTitle));
         String welcomeMessage = driver.findElement(sign_up_form.signUpTitle).getText();
         Assert.assertTrue(welcomeMessage.contains(username));
     }
@@ -76,7 +76,7 @@ public class Transfer_Funds_From_The_Same_Acc {
         Open_New_Account_Form open_new_account_form = new Open_New_Account_Form(driver);
         open_new_account_form.GoToTheOpenNewAccountForm();
 
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(open_new_account_form.openNewAccountForm));
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.openNewAccountTitle));
         String openNewAccountTitle = driver.findElement(open_new_account_form.openNewAccountTitle).getText();
         Assert.assertEquals(openNewAccountTitle, "Open New Account");
     }
@@ -86,7 +86,7 @@ public class Transfer_Funds_From_The_Same_Acc {
         open_new_account_form.OpenNewCheckingAccount();
         open_new_account_form.ClickOnTheOpenNewAccountButton();
 
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(open_new_account_form.openNewAccountForm));
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.openNewAccountTitle));
         String openNewAccountTitle = driver.findElement(open_new_account_form.openNewAccountTitle).getText();
         Assert.assertEquals(openNewAccountTitle, "Account Opened!");
     }
@@ -95,7 +95,7 @@ public class Transfer_Funds_From_The_Same_Acc {
     public void GoToTheTransferFundsForm(){
         Transfer_Funds_Form transfer_funds_form = new Transfer_Funds_Form(driver);
         transfer_funds_form.GoToTheTransferFundsForm();
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(transfer_funds_form.transferFundsForm));
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(transfer_funds_form.transferFundsTitle));
         String transferFundsTitle = driver.findElement(transfer_funds_form.transferFundsTitle).getText();
         Assert.assertEquals(transferFundsTitle, "Transfer Funds");
     }
@@ -105,7 +105,7 @@ public class Transfer_Funds_From_The_Same_Acc {
         Transfer_Funds_Form transfer_funds_form = new Transfer_Funds_Form(driver);
         transfer_funds_form.TransferFundsFromTheSameAccount();
 
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.invisibilityOfElementLocated(transfer_funds_form.transferButton));
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(transfer_funds_form.transferFundsTitle));
         String transferCompleteMessage = driver.findElement(transfer_funds_form.transferFundsTitle).getText();
         Assert.assertEquals(transferCompleteMessage, "Transfer Complete!");
     }
