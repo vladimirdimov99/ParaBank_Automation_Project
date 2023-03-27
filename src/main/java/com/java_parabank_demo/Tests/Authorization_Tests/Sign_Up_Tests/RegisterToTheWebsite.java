@@ -53,7 +53,7 @@ public class RegisterToTheWebsite {
         Sign_Up_Form sign_up_form = new Sign_Up_Form(driver);
         sign_up_form.GoToTheSignUpForm();
 
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(sign_up_form.signUpForm));
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(sign_up_form.signUpTitle));
         String signingUpIsEasyText = driver.findElement(sign_up_form.signUpTitle).getText();
         Assert.assertEquals(signingUpIsEasyText, "Signing up is easy!");
     }
@@ -63,7 +63,7 @@ public class RegisterToTheWebsite {
         Sign_Up_Form sign_up_form = new Sign_Up_Form(driver);
         sign_up_form.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
 
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(sign_up_form.signUpTitle));
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(sign_up_form.signUpTitle));
         String welcomeMessage = driver.findElement(sign_up_form.signUpTitle).getText();
         Assert.assertTrue(welcomeMessage.contains(username));
     }

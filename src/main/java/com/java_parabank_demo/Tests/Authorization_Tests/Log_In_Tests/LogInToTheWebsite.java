@@ -41,7 +41,7 @@ public class LogInToTheWebsite {
         Log_In_Form log_in_form = new Log_In_Form(driver);
         log_in_form.LogInToTheWebsite(username, password);
 
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(log_in_form.leftPanelLocator));
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(log_in_form.welcomeMessageTextLocator));
         String welcomeLogInMessage = driver.findElement(log_in_form.welcomeMessageTextLocator).getText();
         Assert.assertTrue(welcomeLogInMessage.contains(firstName + lastName));
     }
