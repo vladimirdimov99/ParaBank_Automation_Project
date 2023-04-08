@@ -29,7 +29,7 @@ public class Check_The_First_Acc_Details_And_Activity_After_Registering {
     private static String zipCode = "12345";
     private static String phone = "12345";
     private static String ssn = "12345";
-    private static String username = "papagala53";
+    private static String username = "papagala2";
     private static String password = "test123";
     private static String confirmPW = "test123";
     Duration timeout = Duration.ofSeconds(3);
