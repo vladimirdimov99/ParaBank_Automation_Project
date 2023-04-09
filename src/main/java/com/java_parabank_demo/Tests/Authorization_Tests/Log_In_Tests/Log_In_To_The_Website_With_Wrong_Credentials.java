@@ -13,14 +13,14 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class LogInToTheWebsite {
+public class Log_In_To_The_Website_With_Wrong_Credentials {
     WebDriver driver;
     String currentURL;
     String expectedURL;
     String firstName = "Vladimir";
     String lastName = "Dimov";
-    String username = "papagala77";
-    String password = "test123";
+    String username = "zazadada";
+    String password = "fafa333";
     Duration timeout = Duration.ofSeconds(3);
 
     @BeforeTest
@@ -40,6 +40,7 @@ public class LogInToTheWebsite {
     public void LogInToTheWebsite(){
         Log_In_Form log_in_form = new Log_In_Form(driver);
         log_in_form.LogInToTheWebsite(username, password);
+        log_in_form.ClickOnTheLogInButton();
 
         new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(log_in_form.welcomeMessageTextLocator));
         String welcomeLogInMessage = driver.findElement(log_in_form.welcomeMessageTextLocator).getText();

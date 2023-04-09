@@ -87,7 +87,7 @@ public class Check_The_First_Acc_Details_And_Activity_After_Registering {
     }
 
     @Test(priority = 5)
-    public void SelectTheFirstAccAndCheckDetails() throws InterruptedException {
+    public void SelectTheFirstAccAndCheckDetails(){
         //The First Account type after registering should be a CHECKING Account
         Accounts_Overview_Form accounts_overview_form = new Accounts_Overview_Form(driver);
         new WebDriverWait(driver, timeout).until(ExpectedConditions.elementToBeClickable(accounts_overview_form.firstAccount));
