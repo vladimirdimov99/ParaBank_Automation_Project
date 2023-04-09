@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -64,6 +65,7 @@ public class Open_New_Checking_Acc_And_Pay_Bill_From_2nd_To_1st_Acc {
     public void SignUpToTheWebsite(){
         Sign_Up_Form sign_up_form = new Sign_Up_Form(driver);
         sign_up_form.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
+        sign_up_form.ClickOnRegisterSubmitButton();
 
         new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(sign_up_form.signUpTitle));
         String welcomeMessage = driver.findElement(sign_up_form.signUpTitle).getText();
@@ -84,7 +86,7 @@ public class Open_New_Checking_Acc_And_Pay_Bill_From_2nd_To_1st_Acc {
     public void OpenNewCheckingAccountAndDepositFromSecondAccount(){
         Open_New_Account_Form open_new_account_form = new Open_New_Account_Form(driver);
         //Default drop menu is set to CHECKING account
-        open_new_account_form.OpenNewCheckingAccountAndDepositFromFirst();
+        open_new_account_form.OpenNewCheckingAccountAndDepositFromFirstAccount();
         new WebDriverWait(driver, timeout).until(ExpectedConditions.elementToBeClickable(open_new_account_form.openNewAccountSubmitButton));
         open_new_account_form.ClickOnTheOpenNewAccountButton();
 
@@ -114,4 +116,7 @@ public class Open_New_Checking_Acc_And_Pay_Bill_From_2nd_To_1st_Acc {
         String billPayTitle = driver.findElement(bill_pay_form.billPayTitle).getText();
         Assert.assertEquals(billPayTitle, "Bill Payment Complete");
     }
+
+    @AfterTest
+    public void closeTheWebsite() {driver.quit();}
 }

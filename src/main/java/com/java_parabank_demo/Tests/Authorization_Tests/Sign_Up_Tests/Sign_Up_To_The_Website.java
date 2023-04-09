@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class RegisterToTheWebsite {
+public class Sign_Up_To_The_Website {
     WebDriver driver;
     String currentURL;
     String expectedURL;
@@ -61,6 +61,7 @@ public class RegisterToTheWebsite {
     public void SignUpToTheWebsite(){
         Sign_Up_Form sign_up_form = new Sign_Up_Form(driver);
         sign_up_form.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
+        sign_up_form.ClickOnRegisterSubmitButton();
 
         new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(sign_up_form.signUpTitle));
         String welcomeMessage = driver.findElement(sign_up_form.signUpTitle).getText();

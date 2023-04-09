@@ -1,8 +1,6 @@
-package com.java_parabank_demo.Tests.Accounts_Services_Tests.Transfer_Funds_Tests;
+package com.java_parabank_demo.Tests.Request_Loan_Tests;
 
-import com.java_parabank_demo.Pages.Account_Services.Accounts_Overview_Form;
-import com.java_parabank_demo.Pages.Account_Services.Open_New_Account_Form;
-import com.java_parabank_demo.Pages.Account_Services.Transfer_Funds_Form;
+import com.java_parabank_demo.Pages.Account_Services.Request_Loan_Form;
 import com.java_parabank_demo.Pages.Authorization.Sign_Up_Form;
 import com.java_parabank_demo.Pages.LoadTheWebsite;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +15,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class Transfer_Funds_From_The_Same_Acc {
+public class Request_Loan_And_Check_Loan_Acc_Details_From_newAccountID_LinkButton {
     WebDriver driver;
     String currentURL;
     String expectedURL;
@@ -30,7 +28,7 @@ public class Transfer_Funds_From_The_Same_Acc {
     private static String zipCode = "12345";
     private static String phone = "12345";
     private static String ssn = "12345";
-    private static String username = "papagala25";
+    private static String username = "papagala31";
     private static String password = "test123";
     private static String confirmPW = "test123";
     Duration timeout = Duration.ofSeconds(3);
@@ -72,43 +70,34 @@ public class Transfer_Funds_From_The_Same_Acc {
     }
 
     @Test(priority = 4)
-    public void GoToTheOpenNewAccountForm(){
-        Open_New_Account_Form open_new_account_form = new Open_New_Account_Form(driver);
-        open_new_account_form.GoToTheOpenNewAccountForm();
-
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.openNewAccountTitle));
-        String openNewAccountTitle = driver.findElement(open_new_account_form.openNewAccountTitle).getText();
-        Assert.assertEquals(openNewAccountTitle, "Open New Account");
+    public void GoToTheRequestLoanForm(){
+        Request_Loan_Form request_loan_form = new Request_Loan_Form(driver);
+        request_loan_form.GoToTheRequestLoanForm();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(request_loan_form.requestLoanTitle));
+        String requestLoanTitle = driver.findElement(request_loan_form.requestLoanTitle).getText();
+        Assert.assertEquals(requestLoanTitle, "Apply for a Loan");
     }
-    @Test(priority = 5)
-    public void OpenNewCheckingAccount(){
-        Open_New_Account_Form open_new_account_form = new Open_New_Account_Form(driver);
-        open_new_account_form.OpenNewCheckingAccountAndDepositFromFirstAccount();
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.elementToBeSelected(open_new_account_form.selectCheckingAccount));
-        open_new_account_form.ClickOnTheOpenNewAccountButton();
 
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.openNewAccountTitle));
-        String openNewAccountTitle = driver.findElement(open_new_account_form.openNewAccountTitle).getText();
-        Assert.assertEquals(openNewAccountTitle, "Account Opened!");
+    @Test(priority = 5)
+    public void RequestLoanFromFirstAccount(){
+        Request_Loan_Form request_loan_form = new Request_Loan_Form(driver);
+        request_loan_form.EnterLoanAmountAndApplyForLoanFromFirstAccount();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.elementToBeSelected(request_loan_form.fromAccountDropMenuFirstAccount));
+        request_loan_form.ClickOnApplyNowButton();
+
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(request_loan_form.loanStatus));
+        String loanMessage = driver.findElement(request_loan_form.loanStatus).getText();
+        Assert.assertEquals(loanMessage, "Approved");
     }
 
     @Test(priority = 6)
-    public void GoToTheTransferFundsForm(){
-        Transfer_Funds_Form transfer_funds_form = new Transfer_Funds_Form(driver);
-        transfer_funds_form.GoToTheTransferFundsForm();
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(transfer_funds_form.transferFundsTitle));
-        String transferFundsTitle = driver.findElement(transfer_funds_form.transferFundsTitle).getText();
-        Assert.assertEquals(transferFundsTitle, "Transfer Funds");
-    }
+    public void CheckLoanAccDetailsFromNewAccountIDLinkButton(){
+        Request_Loan_Form request_loan_form = new Request_Loan_Form(driver);
+        request_loan_form.ClickOnNewAccountIDLinkButton();
 
-    @Test(priority = 7)
-    public void TransferFundsFromTheSameAccount(){
-        Transfer_Funds_Form transfer_funds_form = new Transfer_Funds_Form(driver);
-        transfer_funds_form.TransferFundsFromTheSameAccount();
-
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(transfer_funds_form.transferFundsTitle));
-        String transferCompleteMessage = driver.findElement(transfer_funds_form.transferFundsTitle).getText();
-        Assert.assertEquals(transferCompleteMessage, "Transfer Complete!");
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(request_loan_form.accountType));
+        String accountType = driver.findElement(request_loan_form.accountType).getText();
+        Assert.assertEquals(accountType, "LOAN");
     }
 
     @AfterTest

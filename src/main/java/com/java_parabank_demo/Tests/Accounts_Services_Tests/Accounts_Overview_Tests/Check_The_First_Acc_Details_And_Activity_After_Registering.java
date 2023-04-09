@@ -69,6 +69,7 @@ public class Check_The_First_Acc_Details_And_Activity_After_Registering {
     public void SignUpToTheWebsite(){
         Sign_Up_Form sign_up_form = new Sign_Up_Form(driver);
         sign_up_form.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
+        sign_up_form.ClickOnRegisterSubmitButton();
 
         new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(sign_up_form.signUpTitle));
         String welcomeMessage = driver.findElement(sign_up_form.signUpTitle).getText();

@@ -21,6 +21,10 @@ public class Sign_Up_Form {
     By registerSubmitButton = By.cssSelector("input[value='Register']");
     public By signUpTitle = By.className("title");
     public By signUpForm = By.className("form2");
+    public By logOutButton = By.linkText("Log Out");
+    public By customerLoginTitle = By.xpath("//*[@id='leftPanel']/h2");
+    public By usernameTakenError = By.id("customer.username.errors");
+
 
     public Sign_Up_Form (WebDriver driver) {this.driver = driver;}
 
@@ -62,7 +66,13 @@ public class Sign_Up_Form {
 
         driver.findElement(confirmPWField).click();
         driver.findElement(confirmPWField).sendKeys(confirmPW);
+    }
 
+    public void ClickOnRegisterSubmitButton(){
         driver.findElement(registerSubmitButton).click();
+    }
+
+    public void ClickOnLogOutButton(){
+        driver.findElement(logOutButton).click();
     }
 }

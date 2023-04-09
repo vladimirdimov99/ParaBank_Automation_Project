@@ -1,6 +1,5 @@
-package com.java_parabank_demo.Tests.Request_Loan_Tests;
+package com.java_parabank_demo.Tests.Authorization_Tests.Sign_Up_Tests;
 
-import com.java_parabank_demo.Pages.Account_Services.Request_Loan_Form;
 import com.java_parabank_demo.Pages.Authorization.Sign_Up_Form;
 import com.java_parabank_demo.Pages.LoadTheWebsite;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +14,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class Request_Loan_After_Registering {
+public class Sign_Up_With_Already_Registered_Username {
     WebDriver driver;
     String currentURL;
     String expectedURL;
@@ -28,7 +27,7 @@ public class Request_Loan_After_Registering {
     private static String zipCode = "12345";
     private static String phone = "12345";
     private static String ssn = "12345";
-    private static String username = "papagala31";
+    private static String username = "papagala27";
     private static String password = "test123";
     private static String confirmPW = "test123";
     Duration timeout = Duration.ofSeconds(3);
@@ -62,7 +61,6 @@ public class Request_Loan_After_Registering {
     public void SignUpToTheWebsite(){
         Sign_Up_Form sign_up_form = new Sign_Up_Form(driver);
         sign_up_form.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
-        sign_up_form.ClickOnRegisterSubmitButton();
 
         new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(sign_up_form.signUpTitle));
         String welcomeMessage = driver.findElement(sign_up_form.signUpTitle).getText();
@@ -70,24 +68,35 @@ public class Request_Loan_After_Registering {
     }
 
     @Test(priority = 4)
-    public void GoToTheRequestLoanForm(){
-        Request_Loan_Form request_loan_form = new Request_Loan_Form(driver);
-        request_loan_form.GoToTheRequestLoanForm();
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(request_loan_form.requestLoanTitle));
-        String requestLoanTitle = driver.findElement(request_loan_form.requestLoanTitle).getText();
-        Assert.assertEquals(requestLoanTitle, "Apply for a Loan");
+    public void LogOutFromTheAccount(){
+        Sign_Up_Form sign_up_form = new Sign_Up_Form(driver);
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.elementToBeClickable(sign_up_form.logOutButton));
+        sign_up_form.ClickOnLogOutButton();
+
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(sign_up_form.customerLoginTitle));
+        String customerLoginTitle = driver.findElement(sign_up_form.customerLoginTitle).getText();
+        Assert.assertEquals(customerLoginTitle, "Customer Login");
     }
 
     @Test(priority = 5)
-    public void RequestLoanFromFirstAccount(){
-        Request_Loan_Form request_loan_form = new Request_Loan_Form(driver);
-        request_loan_form.EnterLoanAmountAndApplyForLoanFromFirstAccount();
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.elementToBeSelected(request_loan_form.fromAccountDropMenuFirstAccount));
-        request_loan_form.ClickOnApplyNowButton();
+    public void GoToTheSignUpFormAgain(){
+        Sign_Up_Form sign_up_form = new Sign_Up_Form(driver);
+        sign_up_form.GoToTheSignUpForm();
 
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(request_loan_form.loanStatus));
-        String loanMessage = driver.findElement(request_loan_form.loanStatus).getText();
-        Assert.assertEquals(loanMessage, "Approved");
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(sign_up_form.signUpTitle));
+        String signingUpIsEasyText = driver.findElement(sign_up_form.signUpTitle).getText();
+        Assert.assertEquals(signingUpIsEasyText, "Signing up is easy!");
+    }
+
+    @Test(priority = 5)
+    public void SignUpToTheWebsiteAgain(){
+        Sign_Up_Form sign_up_form = new Sign_Up_Form(driver);
+        sign_up_form.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
+        sign_up_form.ClickOnRegisterSubmitButton();
+
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(sign_up_form.usernameTakenError));
+        String usernameTakenError = driver.findElement(sign_up_form.usernameTakenError).getText();
+        Assert.assertEquals(usernameTakenError, "This username already exists.");
     }
 
     @AfterTest
