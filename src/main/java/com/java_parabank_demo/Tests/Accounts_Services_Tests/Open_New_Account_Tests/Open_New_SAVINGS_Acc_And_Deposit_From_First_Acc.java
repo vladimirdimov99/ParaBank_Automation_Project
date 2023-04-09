@@ -38,7 +38,6 @@ public class Open_New_SAVINGS_Acc_And_Deposit_From_First_Acc {
     public void OpenTheWebsite(){
         ChromeOptions option = new ChromeOptions();
         option.addArguments("--remote-allow-origins=*");
-
         driver = new ChromeDriver(option);
         new LoadTheWebsite().LoadTheWebsite(driver);
     }

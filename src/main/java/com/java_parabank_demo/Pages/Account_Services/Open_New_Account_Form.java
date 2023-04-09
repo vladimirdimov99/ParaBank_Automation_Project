@@ -13,7 +13,7 @@ public class Open_New_Account_Form {
     By selectAccountDropMenuLocator = By.id("fromAccountId");
     public By openNewAccountSubmitButton = By.cssSelector("input[type='submit']");
     public By selectCheckingAccount = By.xpath("//*[@id='type']/option[1]");
-    By selectSavingsAccount = By.xpath("//*[@id='type']/option[2]");
+    public By selectSavingsAccount = By.xpath("//*[@id='type']/option[2]");
 
     public By selectTheFirstAccount = By.xpath("//*[@id='fromAccountId']/option[1]");
     public By selectTheSecondAccount = By.xpath("//*[@id='fromAccountId']/option[2]");
@@ -24,11 +24,6 @@ public class Open_New_Account_Form {
     public void GoToTheOpenNewAccountForm(){
         driver.findElement(openNewAccountButton).click();
         // Open New Account Form is displayed
-    }
-
-    public void OpenNewCheckingAccount(){
-        driver.findElement(accountTypeDropMenuLocator).click();
-        driver.findElement(selectCheckingAccount).click();
     }
 
     public void OpenNewCheckingAccountAndDepositFromSecondAccount(){
@@ -47,7 +42,7 @@ public class Open_New_Account_Form {
         driver.findElement(selectTheFirstAccount).click();
     }
 
-    public void OpenNewCheckingAccountAndDepositFromFirst(){
+    public void OpenNewCheckingAccountAndDepositFromFirstAccount(){
         driver.findElement(accountTypeDropMenuLocator).click();
         driver.findElement(selectCheckingAccount).click();
 

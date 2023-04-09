@@ -3,9 +3,11 @@ package com.java_parabank_demo.Tests.Accounts_Services_Tests.Accounts_Overview_T
 import com.java_parabank_demo.Pages.Account_Services.Accounts_Overview_Form;
 import com.java_parabank_demo.Pages.Authorization.Sign_Up_Form;
 import com.java_parabank_demo.Pages.LoadTheWebsite;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -38,8 +40,11 @@ public class Check_The_First_Acc_Details_And_Activity_After_Registering {
     public void OpenTheWebsite(){
         ChromeOptions option = new ChromeOptions();
         option.addArguments("--remote-allow-origins=*");
-
         driver = new ChromeDriver(option);
+//        Capabilities caps = ((RemoteWebDriver) driver).getCapabilities();
+//        String browserName = caps.getBrowserName();
+//        String browserVersion = caps.getVersion();
+//        System.out.println(browserName+" "+browserVersion);
         new LoadTheWebsite().LoadTheWebsite(driver);
     }
 

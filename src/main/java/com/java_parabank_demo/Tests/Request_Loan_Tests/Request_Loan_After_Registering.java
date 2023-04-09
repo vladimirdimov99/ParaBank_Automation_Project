@@ -37,7 +37,6 @@ public class Request_Loan_After_Registering {
     public void OpenTheWebsite(){
         ChromeOptions option = new ChromeOptions();
         option.addArguments("--remote-allow-origins=*");
-
         driver = new ChromeDriver(option);
         new LoadTheWebsite().LoadTheWebsite(driver);
     }

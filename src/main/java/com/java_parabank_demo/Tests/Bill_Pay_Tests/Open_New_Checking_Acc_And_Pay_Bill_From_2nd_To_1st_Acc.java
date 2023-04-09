@@ -39,7 +39,6 @@ public class Open_New_Checking_Acc_And_Pay_Bill_From_2nd_To_1st_Acc {
     public void OpenTheWebsite(){
         ChromeOptions option = new ChromeOptions();
         option.addArguments("--remote-allow-origins=*");
-
         driver = new ChromeDriver(option);
         new LoadTheWebsite().LoadTheWebsite(driver);
     }

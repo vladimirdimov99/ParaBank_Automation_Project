@@ -39,7 +39,6 @@ public class Open_New_CHECKING_Acc_And_Deposit_From_Second_Acc {
     public void OpenTheWebsite(){
         ChromeOptions option = new ChromeOptions();
         option.addArguments("--remote-allow-origins=*");
-
         driver = new ChromeDriver(option);
         new LoadTheWebsite().LoadTheWebsite(driver);
     }

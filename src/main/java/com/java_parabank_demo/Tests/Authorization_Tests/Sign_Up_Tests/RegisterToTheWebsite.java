@@ -36,7 +36,6 @@ public class RegisterToTheWebsite {
     public void OpenTheWebsite(){
         ChromeOptions option = new ChromeOptions();
         option.addArguments("--remote-allow-origins=*");
-
         driver = new ChromeDriver(option);
         new LoadTheWebsite().LoadTheWebsite(driver);
     }

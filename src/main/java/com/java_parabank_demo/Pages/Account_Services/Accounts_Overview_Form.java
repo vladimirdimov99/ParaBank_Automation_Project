@@ -10,7 +10,10 @@ public class Accounts_Overview_Form {
     By accountsOverviewButton = By.linkText("Accounts Overview");
     By accountActivityGoButton = By.cssSelector("input[value='Go']");
 
+    public By transactionType = By.xpath("//*[@id='rightPanel']/table/tbody/tr[4]/td[2]");
+    public By transactionLink = By.linkText("Funds Transfer Received");
     public By firstAccount = By.xpath("//*[@id='accountTable']/tbody/tr[1]/td[1]/a");
+    public By secondAccount = By.xpath("//*[@id='accountTable']/tbody/tr[2]/td[1]/a");
     public By accountsOverviewTitle = By.xpath("//*[@id='rightPanel']/div/div/h1[1]");
     public By accountsOverviewForm = By.className("ng-scope");
     public By accountDetailsForm = By.id("rightPanel");
@@ -27,7 +30,11 @@ public class Accounts_Overview_Form {
         driver.findElement(firstAccount).click();
     }
 
+    public void SelectTheSecondAccount() {driver.findElement(secondAccount).click();}
+
     public void CheckAccountActivity(){
         driver.findElement(accountActivityGoButton).click();
     }
+
+    public void CheckTransactionDetails() {driver.findElement(transactionLink).click();}
 }
