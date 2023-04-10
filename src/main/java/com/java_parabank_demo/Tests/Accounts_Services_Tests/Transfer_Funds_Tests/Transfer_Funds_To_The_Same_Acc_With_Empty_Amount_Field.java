@@ -1,6 +1,5 @@
 package com.java_parabank_demo.Tests.Accounts_Services_Tests.Transfer_Funds_Tests;
 
-import com.java_parabank_demo.Pages.Account_Services.Accounts_Overview_Form;
 import com.java_parabank_demo.Pages.Account_Services.Open_New_Account_Form;
 import com.java_parabank_demo.Pages.Account_Services.Transfer_Funds_Form;
 import com.java_parabank_demo.Pages.Authorization.Sign_Up_Form;
@@ -17,7 +16,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class Transfer_Funds_From_The_Same_Acc {
+public class Transfer_Funds_To_The_Same_Acc_With_Empty_Amount_Field {
     WebDriver driver;
     String currentURL;
     String expectedURL;
@@ -33,7 +32,7 @@ public class Transfer_Funds_From_The_Same_Acc {
     private static String username = "papagala25";
     private static String password = "test123";
     private static String confirmPW = "test123";
-    private static String amount = "100";
+    private static String amount = "";
 
     Duration timeout = Duration.ofSeconds(3);
 
@@ -104,7 +103,7 @@ public class Transfer_Funds_From_The_Same_Acc {
     }
 
     @Test(priority = 7)
-    public void TransferFundsFromTheSameAccount(){
+    public void TransferFundsFromTheSameAccountWithEmptyAmountField(){
         Transfer_Funds_Form transfer_funds_form = new Transfer_Funds_Form(driver);
         transfer_funds_form.TransferFundsFromTheSameAccount(amount);
         transfer_funds_form.ClickOnTheTransferButton();

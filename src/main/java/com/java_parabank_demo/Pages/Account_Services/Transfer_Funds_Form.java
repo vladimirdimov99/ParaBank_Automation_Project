@@ -20,12 +20,14 @@ public class Transfer_Funds_Form {
         driver.findElement(transferFundsButton).click();
     }
 
-    public void TransferFundsFromTheSameAccount(){
+    public void TransferFundsFromTheSameAccount(String amount){
         driver.findElement(fromAccountId).click();
         driver.findElement(toAccountId).click();
         driver.findElement(amountField).click();
-        driver.findElement(amountField).sendKeys("100");
+        driver.findElement(amountField).sendKeys(amount);
+    }
 
+    public void ClickOnTheTransferButton(){
         driver.findElement(transferButton).click();
     }
 }
