@@ -108,9 +108,9 @@ public class Transfer_Funds_To_The_Same_Acc_With_Empty_Amount_Field {
         transfer_funds_form.TransferFundsFromTheSameAccount(amount);
         transfer_funds_form.ClickOnTheTransferButton();
 
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(transfer_funds_form.transferFundsTitle));
-        String transferCompleteMessage = driver.findElement(transfer_funds_form.transferFundsTitle).getText();
-        Assert.assertEquals(transferCompleteMessage, "Transfer Complete!");
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(transfer_funds_form.amountError));
+        String amountError = driver.findElement(transfer_funds_form.amountError).getText();
+        Assert.assertEquals(amountError, "The amount cannot be empty.");
     }
 
     @AfterTest

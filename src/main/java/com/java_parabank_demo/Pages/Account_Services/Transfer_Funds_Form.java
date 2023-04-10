@@ -15,6 +15,8 @@ public class Transfer_Funds_Form {
     public By transferButton = By.cssSelector("input[value='Transfer']");
     public By transferFundsForm = By.className("ng-scope");
     public By transferFundsTitle = By.className("title");
+    public By amountError = By.id("amount.errors");
+
 
     public void GoToTheTransferFundsForm(){
         driver.findElement(transferFundsButton).click();
