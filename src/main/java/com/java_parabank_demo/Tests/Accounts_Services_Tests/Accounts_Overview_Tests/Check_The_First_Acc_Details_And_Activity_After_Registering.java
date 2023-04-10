@@ -41,10 +41,6 @@ public class Check_The_First_Acc_Details_And_Activity_After_Registering {
         ChromeOptions option = new ChromeOptions();
         option.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(option);
-//        Capabilities caps = ((RemoteWebDriver) driver).getCapabilities();
-//        String browserName = caps.getBrowserName();
-//        String browserVersion = caps.getVersion();
-//        System.out.println(browserName+" "+browserVersion);
         new LoadTheWebsite().LoadTheWebsite(driver);
     }
 
