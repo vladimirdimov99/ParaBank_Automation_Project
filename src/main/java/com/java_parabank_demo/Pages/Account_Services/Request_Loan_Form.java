@@ -1,11 +1,9 @@
 package com.java_parabank_demo.Pages.Account_Services;
 
+import com.java_parabank_demo.utils.LoadTheDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
-public class Request_Loan_Form {
-    WebDriver driver;
-    public Request_Loan_Form (WebDriver driver) {this.driver = driver;}
+public class Request_Loan_Form extends LoadTheDriver {
 
     By requestLoanButton = By.linkText("Request Loan");
     By loanAmountFieldLocator = By.id("amount");
@@ -21,42 +19,42 @@ public class Request_Loan_Form {
     public By requestLoanTitle = By.className("title");
     public By accountType = By.id("accountType");
 
-    public void GoToTheRequestLoanForm(){
-        driver.findElement(requestLoanButton).click();
+    public void GoToTheRequestLoanForm() {
+        getDriver().findElement(requestLoanButton).click();
         // Request Loan Form is displayed
     }
 
-    public void EnterLoanAmountAndApplyForLoanFromFirstAccount(){
-        driver.findElement(loanAmountFieldLocator).click();
-        driver.findElement(loanAmountFieldLocator).sendKeys("100");
+    public void EnterLoanAmountAndApplyForLoanFromFirstAccount() {
+        getDriver().findElement(loanAmountFieldLocator).click();
+        getDriver().findElement(loanAmountFieldLocator).sendKeys("100");
 
-        driver.findElement(downPaymentFieldLocator).click();
+        getDriver().findElement(downPaymentFieldLocator).click();
         driver.findElement(downPaymentFieldLocator).sendKeys("110");
 
-        driver.findElement(fromAccountDropMenuLocator).click();
-        driver.findElement(fromAccountDropMenuFirstAccount).click();
+        getDriver().findElement(fromAccountDropMenuLocator).click();
+        getDriver().findElement(fromAccountDropMenuFirstAccount).click();
 
         // User successfully applied for a Loan
     }
 
-    public void EnterLoanAmountAndApplyForLoanFromSecondAccount(){
-        driver.findElement(loanAmountFieldLocator).click();
-        driver.findElement(loanAmountFieldLocator).sendKeys();
+    public void EnterLoanAmountAndApplyForLoanFromSecondAccount() {
+        getDriver().findElement(loanAmountFieldLocator).click();
+        getDriver().findElement(loanAmountFieldLocator).sendKeys();
 
-        driver.findElement(downPaymentFieldLocator).click();
-        driver.findElement(downPaymentFieldLocator).sendKeys();
+        getDriver().findElement(downPaymentFieldLocator).click();
+        getDriver().findElement(downPaymentFieldLocator).sendKeys();
 
-        driver.findElement(fromAccountDropMenuLocator).click();
-        driver.findElement(fromAccountDropMenuSecondAccount).click();
+        getDriver().findElement(fromAccountDropMenuLocator).click();
+        getDriver().findElement(fromAccountDropMenuSecondAccount).click();
 
         // User successfully applied for a Loan
     }
 
-    public void ClickOnApplyNowButton(){
-        driver.findElement(applyNowButton).click();
+    public void ClickOnApplyNowButton() {
+        getDriver().findElement(applyNowButton).click();
     }
 
-    public void ClickOnNewAccountIDLinkButton(){
-        driver.findElement(newAccountId).click();
+    public void ClickOnNewAccountIDLinkButton() {
+        getDriver().findElement(newAccountId).click();
     }
 }

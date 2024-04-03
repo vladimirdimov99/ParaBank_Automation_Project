@@ -1,9 +1,7 @@
 package com.java_parabank_demo.Tests.Authorization_Tests.Log_In_Tests;
 
 import com.java_parabank_demo.Pages.Authorization.Log_In_Form;
-import com.java_parabank_demo.Pages.LoadTheWebsite;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import com.java_parabank_demo.utils.LoadTheDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -13,8 +11,8 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class Log_In_To_The_Website_With_Wrong_Credentials {
-    WebDriver driver;
+public class Log_In_To_The_Website_With_Wrong_Credentials extends LoadTheDriver {
+
     String currentURL;
     String expectedURL;
     String firstName = "Vladimir";
@@ -24,29 +22,30 @@ public class Log_In_To_The_Website_With_Wrong_Credentials {
     Duration timeout = Duration.ofSeconds(3);
 
     @BeforeTest
-    public void OpenTheWebsite(){
-        driver = new ChromeDriver();
-        new LoadTheWebsite().LoadTheWebsite(driver);
+    public void OpenTheWebsite() {
+        new LoadTheDriver().LoadTheWebsite(getDriver());
     }
 
     @Test(priority = 1)
-    public void checkIfTheWebsiteURLIsCorrect(){
-        currentURL = driver.getCurrentUrl();
+    public void checkIfTheWebsiteURLIsCorrect() {
+        currentURL = getDriver().getCurrentUrl();
         expectedURL = "https://parabank.parasoft.com/parabank/index.htm";
         Assert.assertEquals(currentURL, expectedURL);
     }
 
     @Test(priority = 2)
-    public void LogInToTheWebsite(){
-        Log_In_Form log_in_form = new Log_In_Form(driver);
+    public void LogInToTheWebsite() {
+        Log_In_Form log_in_form = new Log_In_Form();
         log_in_form.LogInToTheWebsite(username, password);
         log_in_form.ClickOnTheLogInButton();
 
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(log_in_form.welcomeMessageTextLocator));
-        String welcomeLogInMessage = driver.findElement(log_in_form.welcomeMessageTextLocator).getText();
+        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(log_in_form.welcomeMessageTextLocator));
+        String welcomeLogInMessage = getDriver().findElement(log_in_form.welcomeMessageTextLocator).getText();
         Assert.assertTrue(welcomeLogInMessage.contains(firstName + lastName));
     }
 
     @AfterTest
-    public void closeTheWebsite() {driver.quit();}
+    public void closeTheWebsite() {
+        quitTheDriver();
+    }
 }

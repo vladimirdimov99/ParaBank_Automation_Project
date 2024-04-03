@@ -1,11 +1,9 @@
 package com.java_parabank_demo.Pages.Account_Services;
 
+import com.java_parabank_demo.utils.LoadTheDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
-public class Bill_Pay_Form {
-    WebDriver driver;
-    public Bill_Pay_Form (WebDriver driver) {this.driver = driver;}
+public class Bill_Pay_Form extends LoadTheDriver {
 
     By billPayButton = By.linkText("Bill Pay");
     By payeeNameFieldLocator = By.name("payee.name");
@@ -23,45 +21,45 @@ public class Bill_Pay_Form {
     By fromAccountDropMenuSecondAccount = By.xpath("//*[@id='rightPanel']/div/div[1]/form/table/tbody/tr[13]/td[2]/select/option[2]");
     public By billPayTitle = By.className("title");
 
-    public void GoToTheBillPayForm(){
-        driver.findElement(billPayButton).click();
+    public void GoToTheBillPayForm() {
+        getDriver().findElement(billPayButton).click();
         // Accounts Overview Form is displayed with all of the user's accounts and his Balance and Available Amount
     }
 
     public void PayABillWithTheSecondAccount(String payeeName, String addressField, String cityField, String stateField,
-                                            String zipCodeField, String phoneField, String account, String verifyAcc, String amount){
-        driver.findElement(payeeNameFieldLocator).click();
-        driver.findElement(payeeNameFieldLocator).sendKeys(payeeName);
+                                             String zipCodeField, String phoneField, String account, String verifyAcc, String amount) {
+        getDriver().findElement(payeeNameFieldLocator).click();
+        getDriver().findElement(payeeNameFieldLocator).sendKeys(payeeName);
 
-        driver.findElement(addressFieldLocator).click();
-        driver.findElement(addressFieldLocator).sendKeys(addressField);
+        getDriver().findElement(addressFieldLocator).click();
+        getDriver().findElement(addressFieldLocator).sendKeys(addressField);
 
-        driver.findElement(cityFieldLocator).click();
-        driver.findElement(cityFieldLocator).sendKeys(cityField);
+        getDriver().findElement(cityFieldLocator).click();
+        getDriver().findElement(cityFieldLocator).sendKeys(cityField);
 
-        driver.findElement(stateFieldLocator).click();
-        driver.findElement(stateFieldLocator).sendKeys(stateField);
+        getDriver().findElement(stateFieldLocator).click();
+        getDriver().findElement(stateFieldLocator).sendKeys(stateField);
 
-        driver.findElement(zipCodeFieldLocator).click();
-        driver.findElement(zipCodeFieldLocator).sendKeys(zipCodeField);
+        getDriver().findElement(zipCodeFieldLocator).click();
+        getDriver().findElement(zipCodeFieldLocator).sendKeys(zipCodeField);
 
-        driver.findElement(phoneFieldLocator).click();
-        driver.findElement(phoneFieldLocator).sendKeys(phoneField);
+        getDriver().findElement(phoneFieldLocator).click();
+        getDriver().findElement(phoneFieldLocator).sendKeys(phoneField);
 
-        driver.findElement(accountFieldLocator).click();
-        driver.findElement(accountFieldLocator).sendKeys(account);
+        getDriver().findElement(accountFieldLocator).click();
+        getDriver().findElement(accountFieldLocator).sendKeys(account);
 
-        driver.findElement(verifyAccountFieldLocator).click();
-        driver.findElement(verifyAccountFieldLocator).sendKeys(verifyAcc);
+        getDriver().findElement(verifyAccountFieldLocator).click();
+        getDriver().findElement(verifyAccountFieldLocator).sendKeys(verifyAcc);
 
-        driver.findElement(amountFieldLocator).click();
-        driver.findElement(amountFieldLocator).sendKeys(amount);
+        getDriver().findElement(amountFieldLocator).click();
+        getDriver().findElement(amountFieldLocator).sendKeys(amount);
 
-        driver.findElement(fromAccountDropMenuLocator).click();
-        driver.findElement(fromAccountDropMenuSecondAccount).click();
+        getDriver().findElement(fromAccountDropMenuLocator).click();
+        getDriver().findElement(fromAccountDropMenuSecondAccount).click();
     }
 
-    public void ClickOnTheSendPaymentButton(){
-        driver.findElement(sendPaymentSubmitButton).click();
+    public void ClickOnTheSendPaymentButton() {
+        getDriver().findElement(sendPaymentSubmitButton).click();
     }
 }

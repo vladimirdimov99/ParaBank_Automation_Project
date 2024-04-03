@@ -1,15 +1,11 @@
 package com.java_parabank_demo.helpers;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.junit.Test;
 
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class CredentialsAndURLS {
 
@@ -97,9 +93,13 @@ public class CredentialsAndURLS {
         return address;
     }
 
-    public void setCity(String city) {this.city = city;}
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-    public static String getCity() {return city;}
+    public static String getCity() {
+        return city;
+    }
 
     public void setState(String state) {
         this.state = state;

@@ -1,10 +1,9 @@
 package com.java_parabank_demo.Pages.Authorization;
 
+import com.java_parabank_demo.utils.LoadTheDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
-public class Sign_Up_Form {
-    WebDriver driver;
+public class Sign_Up_Form extends LoadTheDriver {
 
     By registerButton = By.linkText("Register");
     By firstNameField = By.id("customer.firstName");
@@ -25,54 +24,51 @@ public class Sign_Up_Form {
     public By customerLoginTitle = By.xpath("//*[@id='leftPanel']/h2");
     public By usernameTakenError = By.id("customer.username.errors");
 
-
-    public Sign_Up_Form (WebDriver driver) {this.driver = driver;}
-
     public void GoToTheSignUpForm (){
-        driver.findElement(registerButton).click();
+        getDriver().findElement(registerButton).click();
     }
 
     public void SignUpToTheWebsite(String firstName, String lastName, String address, String city, String state, String zipCode,
                                    String phone, String ssn, String username, String password, String confirmPW){
-        driver.findElement(firstNameField).click();
-        driver.findElement(firstNameField).sendKeys(firstName);
+        getDriver().findElement(firstNameField).click();
+        getDriver().findElement(firstNameField).sendKeys(firstName);
 
-        driver.findElement(lastNameField).click();
-        driver.findElement(lastNameField).sendKeys(lastName);
+        getDriver().findElement(lastNameField).click();
+        getDriver().findElement(lastNameField).sendKeys(lastName);
 
-        driver.findElement(addressField).click();
-        driver.findElement(addressField).sendKeys(address);
+        getDriver().findElement(addressField).click();
+        getDriver().findElement(addressField).sendKeys(address);
 
-        driver.findElement(cityField).click();
-        driver.findElement(cityField).sendKeys(city);
+        getDriver().findElement(cityField).click();
+        getDriver().findElement(cityField).sendKeys(city);
 
-        driver.findElement(stateField).click();
-        driver.findElement(stateField).sendKeys(state);
+        getDriver().findElement(stateField).click();
+        getDriver().findElement(stateField).sendKeys(state);
 
-        driver.findElement(zipCodeField).click();
-        driver.findElement(zipCodeField).sendKeys(zipCode);
+        getDriver().findElement(zipCodeField).click();
+        getDriver().findElement(zipCodeField).sendKeys(zipCode);
 
-        driver.findElement(phoneNumberField).click();
-        driver.findElement(phoneNumberField).sendKeys(phone);
+        getDriver().findElement(phoneNumberField).click();
+        getDriver().findElement(phoneNumberField).sendKeys(phone);
 
-        driver.findElement(SSNField).click();
-        driver.findElement(SSNField).sendKeys(ssn);
+        getDriver().findElement(SSNField).click();
+        getDriver().findElement(SSNField).sendKeys(ssn);
 
-        driver.findElement(userNameField).click();
-        driver.findElement(userNameField).sendKeys(username);
+        getDriver().findElement(userNameField).click();
+        getDriver().findElement(userNameField).sendKeys(username);
 
-        driver.findElement(setPasswordField).click();
-        driver.findElement(setPasswordField).sendKeys(password);
+        getDriver().findElement(setPasswordField).click();
+        getDriver().findElement(setPasswordField).sendKeys(password);
 
-        driver.findElement(confirmPWField).click();
-        driver.findElement(confirmPWField).sendKeys(confirmPW);
+        getDriver().findElement(confirmPWField).click();
+        getDriver().findElement(confirmPWField).sendKeys(confirmPW);
     }
 
     public void ClickOnRegisterSubmitButton(){
-        driver.findElement(registerSubmitButton).click();
+        getDriver().findElement(registerSubmitButton).click();
     }
 
     public void ClickOnLogOutButton(){
-        driver.findElement(logOutButton).click();
+        getDriver().findElement(logOutButton).click();
     }
 }

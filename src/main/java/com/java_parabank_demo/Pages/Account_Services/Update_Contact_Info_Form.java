@@ -1,11 +1,9 @@
 package com.java_parabank_demo.Pages.Account_Services;
 
+import com.java_parabank_demo.utils.LoadTheDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
-public class Update_Contact_Info_Form {
-    WebDriver driver;
-    public Update_Contact_Info_Form (WebDriver driver) {this.driver = driver;}
+public class Update_Contact_Info_Form extends LoadTheDriver {
 
     By editFirstName = By.id("customer.firstName");
     By editLastName = By.id("customer.lastName");

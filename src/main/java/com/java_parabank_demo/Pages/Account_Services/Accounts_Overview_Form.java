@@ -1,11 +1,9 @@
 package com.java_parabank_demo.Pages.Account_Services;
 
+import com.java_parabank_demo.utils.LoadTheDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
-public class Accounts_Overview_Form {
-    WebDriver driver;
-    public Accounts_Overview_Form (WebDriver driver) {this.driver = driver;}
+public class Accounts_Overview_Form extends LoadTheDriver {
 
     By accountsOverviewButton = By.linkText("Accounts Overview");
     By accountActivityGoButton = By.cssSelector("input[value='Go']");
@@ -21,20 +19,24 @@ public class Accounts_Overview_Form {
     public By transactionActivityMessage = By.xpath("//*[@ng-if='showActivity']/p");
 
 
-    public void GoToTheAccountsOverviewForm(){
-        driver.findElement(accountsOverviewButton).click();
+    public void GoToTheAccountsOverviewForm() {
+        getDriver().findElement(accountsOverviewButton).click();
         // Accounts Overview Form is displayed with all of the user's accounts and his Balance and Available Amount
     }
 
-    public void SelectTheFirstAccount(){
-        driver.findElement(firstAccount).click();
+    public void SelectTheFirstAccount() {
+        getDriver().findElement(firstAccount).click();
     }
 
-    public void SelectTheSecondAccount() {driver.findElement(secondAccount).click();}
-
-    public void CheckAccountActivity(){
-        driver.findElement(accountActivityGoButton).click();
+    public void SelectTheSecondAccount() {
+        getDriver().findElement(secondAccount).click();
     }
 
-    public void CheckTransactionDetails() {driver.findElement(transactionLink).click();}
+    public void CheckAccountActivity() {
+        getDriver().findElement(accountActivityGoButton).click();
+    }
+
+    public void CheckTransactionDetails() {
+        getDriver().findElement(transactionLink).click();
+    }
 }

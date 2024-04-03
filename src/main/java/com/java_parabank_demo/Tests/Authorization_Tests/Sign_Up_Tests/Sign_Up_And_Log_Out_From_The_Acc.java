@@ -1,10 +1,7 @@
 package com.java_parabank_demo.Tests.Authorization_Tests.Sign_Up_Tests;
 
 import com.java_parabank_demo.Pages.Authorization.Sign_Up_Form;
-import com.java_parabank_demo.Pages.LoadTheWebsite;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import com.java_parabank_demo.utils.LoadTheDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -14,8 +11,8 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class Sign_Up_And_Log_Out_From_The_Acc {
-    WebDriver driver;
+public class Sign_Up_And_Log_Out_From_The_Acc extends LoadTheDriver {
+
     String currentURL;
     String expectedURL;
 
@@ -27,58 +24,57 @@ public class Sign_Up_And_Log_Out_From_The_Acc {
     private static String zipCode = "12345";
     private static String phone = "12345";
     private static String ssn = "12345";
-    private static String username = "papagala27";
+    private static String username = "growth27";
     private static String password = "test123";
     private static String confirmPW = "test123";
     Duration timeout = Duration.ofSeconds(3);
 
     @BeforeTest
-    public void OpenTheWebsite(){
-        ChromeOptions option = new ChromeOptions();
-        option.addArguments("--remote-allow-origins=*");
-        driver = new ChromeDriver(option);
-        new LoadTheWebsite().LoadTheWebsite(driver);
+    public void OpenTheWebsite() {
+        new LoadTheDriver().LoadTheWebsite(getDriver());
     }
 
     @Test(priority = 1)
-    public void checkIfTheWebsiteURLIsCorrect(){
-        currentURL = driver.getCurrentUrl();
+    public void checkIfTheWebsiteURLIsCorrect() {
+        currentURL = getDriver().getCurrentUrl();
         expectedURL = "https://parabank.parasoft.com/parabank/index.htm";
         Assert.assertEquals(currentURL, expectedURL);
     }
 
     @Test(priority = 2)
-    public void GoToTheSignUpForm(){
-        Sign_Up_Form sign_up_form = new Sign_Up_Form(driver);
+    public void GoToTheSignUpForm() {
+        Sign_Up_Form sign_up_form = new Sign_Up_Form();
         sign_up_form.GoToTheSignUpForm();
 
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(sign_up_form.signUpTitle));
-        String signingUpIsEasyText = driver.findElement(sign_up_form.signUpTitle).getText();
+        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(sign_up_form.signUpTitle));
+        String signingUpIsEasyText = getDriver().findElement(sign_up_form.signUpTitle).getText();
         Assert.assertEquals(signingUpIsEasyText, "Signing up is easy!");
     }
 
     @Test(priority = 3)
-    public void SignUpToTheWebsite(){
-        Sign_Up_Form sign_up_form = new Sign_Up_Form(driver);
+    public void SignUpToTheWebsite() {
+        Sign_Up_Form sign_up_form = new Sign_Up_Form();
         sign_up_form.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
         sign_up_form.ClickOnRegisterSubmitButton();
 
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(sign_up_form.signUpTitle));
-        String welcomeMessage = driver.findElement(sign_up_form.signUpTitle).getText();
+        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(sign_up_form.signUpTitle));
+        String welcomeMessage = getDriver().findElement(sign_up_form.signUpTitle).getText();
         Assert.assertTrue(welcomeMessage.contains(username));
     }
 
     @Test(priority = 4)
-    public void LogOutFromTheAccount(){
-        Sign_Up_Form sign_up_form = new Sign_Up_Form(driver);
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.elementToBeClickable(sign_up_form.logOutButton));
+    public void LogOutFromTheAccount() {
+        Sign_Up_Form sign_up_form = new Sign_Up_Form();
+        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.elementToBeClickable(sign_up_form.logOutButton));
         sign_up_form.ClickOnLogOutButton();
 
-        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(sign_up_form.customerLoginTitle));
-        String customerLoginTitle = driver.findElement(sign_up_form.customerLoginTitle).getText();
+        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(sign_up_form.customerLoginTitle));
+        String customerLoginTitle = getDriver().findElement(sign_up_form.customerLoginTitle).getText();
         Assert.assertEquals(customerLoginTitle, "Customer Login");
     }
 
     @AfterTest
-    public void closeTheWebsite() {driver.quit();}
+    public void closeTheWebsite() {
+        quitTheDriver();
+    }
 }
