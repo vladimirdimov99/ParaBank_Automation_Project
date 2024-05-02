@@ -2,7 +2,6 @@ package com.java_parabank_demo.Pages.Account_Services;
 
 import com.java_parabank_demo.utils.LoadTheDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 public class Transfer_Funds_Form extends LoadTheDriver {
 
@@ -17,18 +16,18 @@ public class Transfer_Funds_Form extends LoadTheDriver {
     public By amountError = By.id("amount.errors");
 
 
-    public void GoToTheTransferFundsForm(){
+    public void goToTheTransferFundsForm() {
         getDriver().findElement(transferFundsButton).click();
     }
 
-    public void TransferFundsFromTheSameAccount(String amount){
+    public void transferFundsFromTheSameAccount(String amount) {
         getDriver().findElement(fromAccountId).click();
         getDriver().findElement(toAccountId).click();
         getDriver().findElement(amountField).click();
         getDriver().findElement(amountField).sendKeys(amount);
     }
 
-    public void ClickOnTheTransferButton(){
+    public void clickOnTheTransferButton() {
         getDriver().findElement(transferButton).click();
     }
 }

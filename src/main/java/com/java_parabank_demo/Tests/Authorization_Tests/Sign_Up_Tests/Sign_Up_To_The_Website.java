@@ -30,7 +30,7 @@ public class Sign_Up_To_The_Website extends LoadTheDriver {
     Duration timeout = Duration.ofSeconds(3);
 
     @BeforeTest
-    public void OpenTheWebsite() {
+    public void openTheWebsite() {
         new LoadTheDriver().loadTheWebsite(getDriver());
     }
 
@@ -42,7 +42,7 @@ public class Sign_Up_To_The_Website extends LoadTheDriver {
     }
 
     @Test(priority = 2)
-    public void GoToTheSignUpForm() {
+    public void goToTheSignUpForm() {
         Sign_Up_Form sign_up_form = new Sign_Up_Form();
         sign_up_form.GoToTheSignUpForm();
 
@@ -52,7 +52,7 @@ public class Sign_Up_To_The_Website extends LoadTheDriver {
     }
 
     @Test(priority = 3)
-    public void SignUpToTheWebsite() {
+    public void signUpToTheWebsite() {
         Sign_Up_Form sign_up_form = new Sign_Up_Form();
         sign_up_form.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
         sign_up_form.ClickOnRegisterSubmitButton();

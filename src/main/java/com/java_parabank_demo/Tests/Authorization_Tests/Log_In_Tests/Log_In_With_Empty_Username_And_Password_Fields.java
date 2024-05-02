@@ -22,7 +22,7 @@ public class Log_In_With_Empty_Username_And_Password_Fields extends LoadTheDrive
     Duration timeout = Duration.ofSeconds(3);
 
     @BeforeTest
-    public void OpenTheWebsite() {
+    public void openTheWebsite() {
         new LoadTheDriver().loadTheWebsite(getDriver());
     }
 
@@ -34,7 +34,7 @@ public class Log_In_With_Empty_Username_And_Password_Fields extends LoadTheDrive
     }
 
     @Test(priority = 2)
-    public void LogInWithEmptyUsernameAndPassword() {
+    public void logInWithEmptyUsernameAndPassword() {
         Log_In_Form log_in_form = new Log_In_Form();
         log_in_form.ClickOnTheLogInButton();
 

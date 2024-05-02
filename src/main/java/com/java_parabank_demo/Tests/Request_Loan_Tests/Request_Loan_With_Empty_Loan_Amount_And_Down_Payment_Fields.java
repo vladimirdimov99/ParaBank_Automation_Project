@@ -31,7 +31,7 @@ public class Request_Loan_With_Empty_Loan_Amount_And_Down_Payment_Fields extends
     Duration timeout = Duration.ofSeconds(3);
 
     @BeforeTest
-    public void OpenTheWebsite() {
+    public void openTheWebsite() {
         new LoadTheDriver().loadTheWebsite(getDriver());
     }
 
@@ -43,7 +43,7 @@ public class Request_Loan_With_Empty_Loan_Amount_And_Down_Payment_Fields extends
     }
 
     @Test(priority = 2)
-    public void GoToTheSignUpForm() {
+    public void goToTheSignUpForm() {
         Sign_Up_Form sign_up_form = new Sign_Up_Form();
         sign_up_form.GoToTheSignUpForm();
 
@@ -53,7 +53,7 @@ public class Request_Loan_With_Empty_Loan_Amount_And_Down_Payment_Fields extends
     }
 
     @Test(priority = 3)
-    public void SignUpToTheWebsite() {
+    public void signUpToTheWebsite() {
         Sign_Up_Form sign_up_form = new Sign_Up_Form();
         sign_up_form.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
         sign_up_form.ClickOnRegisterSubmitButton();
@@ -64,19 +64,19 @@ public class Request_Loan_With_Empty_Loan_Amount_And_Down_Payment_Fields extends
     }
 
     @Test(priority = 4)
-    public void GoToTheRequestLoanForm() {
+    public void goToTheRequestLoanForm() {
         Request_Loan_Form request_loan_form = new Request_Loan_Form();
-        request_loan_form.GoToTheRequestLoanForm();
+        request_loan_form.goToTheRequestLoanForm();
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(request_loan_form.requestLoanTitle));
         String requestLoanTitle = getDriver().findElement(request_loan_form.requestLoanTitle).getText();
         Assert.assertEquals(requestLoanTitle, "Apply for a Loan");
     }
 
     @Test(priority = 5)
-    public void RequestLoanWithEmptyLoanAmountAndDownPaymentFields() {
+    public void requestLoanWithEmptyLoanAmountAndDownPaymentFields() {
         Request_Loan_Form request_loan_form = new Request_Loan_Form();
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.elementToBeClickable(request_loan_form.applyNowButton));
-        request_loan_form.ClickOnApplyNowButton();
+        request_loan_form.clickOnApplyNowButton();
 
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(request_loan_form.errorMessage));
         String errorMessage = getDriver().findElement(request_loan_form.errorMessage).getText();

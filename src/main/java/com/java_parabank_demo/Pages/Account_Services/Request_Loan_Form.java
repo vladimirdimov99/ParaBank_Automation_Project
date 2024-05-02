@@ -19,12 +19,12 @@ public class Request_Loan_Form extends LoadTheDriver {
     public By requestLoanTitle = By.className("title");
     public By accountType = By.id("accountType");
 
-    public void GoToTheRequestLoanForm() {
+    public void goToTheRequestLoanForm() {
         getDriver().findElement(requestLoanButton).click();
         // Request Loan Form is displayed
     }
 
-    public void EnterLoanAmountAndApplyForLoanFromFirstAccount() {
+    public void enterLoanAmountAndApplyForLoanFromFirstAccount() {
         getDriver().findElement(loanAmountFieldLocator).click();
         getDriver().findElement(loanAmountFieldLocator).sendKeys("100");
 
@@ -37,7 +37,7 @@ public class Request_Loan_Form extends LoadTheDriver {
         // User successfully applied for a Loan
     }
 
-    public void EnterLoanAmountAndApplyForLoanFromSecondAccount() {
+    public void enterLoanAmountAndApplyForLoanFromSecondAccount() {
         getDriver().findElement(loanAmountFieldLocator).click();
         getDriver().findElement(loanAmountFieldLocator).sendKeys();
 
@@ -50,11 +50,11 @@ public class Request_Loan_Form extends LoadTheDriver {
         // User successfully applied for a Loan
     }
 
-    public void ClickOnApplyNowButton() {
+    public void clickOnApplyNowButton() {
         getDriver().findElement(applyNowButton).click();
     }
 
-    public void ClickOnNewAccountIDLinkButton() {
+    public void clickOnNewAccountIDLinkButton() {
         getDriver().findElement(newAccountId).click();
     }
 }

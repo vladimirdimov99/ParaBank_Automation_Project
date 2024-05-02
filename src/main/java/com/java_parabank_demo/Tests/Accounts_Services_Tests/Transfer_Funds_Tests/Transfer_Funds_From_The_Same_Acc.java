@@ -34,7 +34,7 @@ public class Transfer_Funds_From_The_Same_Acc extends LoadTheDriver {
     Duration timeout = Duration.ofSeconds(3);
 
     @BeforeTest
-    public void OpenTheWebsite() {
+    public void openTheWebsite() {
         new LoadTheDriver().loadTheWebsite(getDriver());
     }
 
@@ -46,7 +46,7 @@ public class Transfer_Funds_From_The_Same_Acc extends LoadTheDriver {
     }
 
     @Test(priority = 2)
-    public void GoToTheSignUpForm() {
+    public void goToTheSignUpForm() {
         Sign_Up_Form sign_up_form = new Sign_Up_Form();
         sign_up_form.GoToTheSignUpForm();
 
@@ -56,7 +56,7 @@ public class Transfer_Funds_From_The_Same_Acc extends LoadTheDriver {
     }
 
     @Test(priority = 3)
-    public void SignUpToTheWebsite() {
+    public void signUpToTheWebsite() {
         Sign_Up_Form sign_up_form = new Sign_Up_Form();
         sign_up_form.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
         sign_up_form.ClickOnRegisterSubmitButton();
@@ -67,9 +67,9 @@ public class Transfer_Funds_From_The_Same_Acc extends LoadTheDriver {
     }
 
     @Test(priority = 4)
-    public void GoToTheOpenNewAccountForm() {
+    public void goToTheOpenNewAccountForm() {
         Open_New_Account_Form open_new_account_form = new Open_New_Account_Form();
-        open_new_account_form.GoToTheOpenNewAccountForm();
+        open_new_account_form.goToTheOpenNewAccountForm();
 
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.openNewAccountTitle));
         String openNewAccountTitle = getDriver().findElement(open_new_account_form.openNewAccountTitle).getText();
@@ -77,11 +77,11 @@ public class Transfer_Funds_From_The_Same_Acc extends LoadTheDriver {
     }
 
     @Test(priority = 5)
-    public void OpenNewCheckingAccount() {
+    public void openNewCheckingAccount() {
         Open_New_Account_Form open_new_account_form = new Open_New_Account_Form();
-        open_new_account_form.OpenNewCheckingAccountAndDepositFromFirstAccount();
+        open_new_account_form.openNewCheckingAccountAndDepositFromFirstAccount();
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.elementToBeSelected(open_new_account_form.selectCheckingAccount));
-        open_new_account_form.ClickOnTheOpenNewAccountButton();
+        open_new_account_form.clickOnTheOpenNewAccountButton();
 
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.openNewAccountTitle));
         String openNewAccountTitle = getDriver().findElement(open_new_account_form.openNewAccountTitle).getText();
@@ -89,19 +89,19 @@ public class Transfer_Funds_From_The_Same_Acc extends LoadTheDriver {
     }
 
     @Test(priority = 6)
-    public void GoToTheTransferFundsForm() {
+    public void goToTheTransferFundsForm() {
         Transfer_Funds_Form transfer_funds_form = new Transfer_Funds_Form();
-        transfer_funds_form.GoToTheTransferFundsForm();
+        transfer_funds_form.goToTheTransferFundsForm();
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(transfer_funds_form.transferFundsTitle));
         String transferFundsTitle = getDriver().findElement(transfer_funds_form.transferFundsTitle).getText();
         Assert.assertEquals(transferFundsTitle, "Transfer Funds");
     }
 
     @Test(priority = 7)
-    public void TransferFundsFromTheSameAccount() {
+    public void transferFundsFromTheSameAccount() {
         Transfer_Funds_Form transfer_funds_form = new Transfer_Funds_Form();
-        transfer_funds_form.TransferFundsFromTheSameAccount(amount);
-        transfer_funds_form.ClickOnTheTransferButton();
+        transfer_funds_form.transferFundsFromTheSameAccount(amount);
+        transfer_funds_form.clickOnTheTransferButton();
 
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(transfer_funds_form.transferFundsTitle));
         String transferCompleteMessage = getDriver().findElement(transfer_funds_form.transferFundsTitle).getText();

@@ -32,7 +32,7 @@ public class Open_New_SAVINGS_Acc_And_Deposit_From_First_Acc extends LoadTheDriv
     Duration timeout = Duration.ofSeconds(3);
 
     @BeforeTest
-    public void OpenTheWebsite() {
+    public void openTheWebsite() {
         new LoadTheDriver().loadTheWebsite(getDriver());
     }
 
@@ -44,7 +44,7 @@ public class Open_New_SAVINGS_Acc_And_Deposit_From_First_Acc extends LoadTheDriv
     }
 
     @Test(priority = 2)
-    public void GoToTheSignUpForm() {
+    public void goToTheSignUpForm() {
         Sign_Up_Form sign_up_form = new Sign_Up_Form();
         sign_up_form.GoToTheSignUpForm();
 
@@ -54,7 +54,7 @@ public class Open_New_SAVINGS_Acc_And_Deposit_From_First_Acc extends LoadTheDriv
     }
 
     @Test(priority = 3)
-    public void SignUpToTheWebsite() {
+    public void signUpToTheWebsite() {
         Sign_Up_Form sign_up_form = new Sign_Up_Form();
         sign_up_form.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
         sign_up_form.ClickOnRegisterSubmitButton();
@@ -65,9 +65,9 @@ public class Open_New_SAVINGS_Acc_And_Deposit_From_First_Acc extends LoadTheDriv
     }
 
     @Test(priority = 4)
-    public void GoToTheOpenNewAccountForm() {
+    public void goToTheOpenNewAccountForm() {
         Open_New_Account_Form open_new_account_form = new Open_New_Account_Form();
-        open_new_account_form.GoToTheOpenNewAccountForm();
+        open_new_account_form.goToTheOpenNewAccountForm();
 
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.openNewAccountTitle));
         openNewAccountTitle = getDriver().findElement(open_new_account_form.openNewAccountTitle).getText();
@@ -75,11 +75,11 @@ public class Open_New_SAVINGS_Acc_And_Deposit_From_First_Acc extends LoadTheDriv
     }
 
     @Test(priority = 5)
-    public void OpenNewSavingsAccountAndDepositFromFirstAccount() {
+    public void openNewSavingsAccountAndDepositFromFirstAccount() {
         Open_New_Account_Form open_new_account_form = new Open_New_Account_Form();
-        open_new_account_form.OpenNewSavingsAccountAndDepositFromFirstAccount();
+        open_new_account_form.openNewSavingsAccountAndDepositFromFirstAccount();
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.elementToBeSelected(open_new_account_form.selectTheFirstAccount));
-        open_new_account_form.ClickOnTheOpenNewAccountButton();
+        open_new_account_form.clickOnTheOpenNewAccountButton();
 
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.openNewAccountTitle));
         openNewAccountTitle = getDriver().findElement(open_new_account_form.openNewAccountTitle).getText();

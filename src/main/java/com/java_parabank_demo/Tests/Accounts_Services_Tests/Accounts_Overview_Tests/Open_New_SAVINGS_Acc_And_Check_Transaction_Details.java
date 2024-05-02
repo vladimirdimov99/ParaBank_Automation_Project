@@ -33,7 +33,7 @@ public class Open_New_SAVINGS_Acc_And_Check_Transaction_Details extends LoadTheD
     Duration timeout = Duration.ofSeconds(3);
 
     @BeforeTest
-    public void OpenTheWebsite() {
+    public void openTheWebsite() {
         new LoadTheDriver().loadTheWebsite(getDriver());
     }
 
@@ -45,7 +45,7 @@ public class Open_New_SAVINGS_Acc_And_Check_Transaction_Details extends LoadTheD
     }
 
     @Test(priority = 2)
-    public void GoToTheSignUpForm() {
+    public void goToTheSignUpForm() {
         Sign_Up_Form sign_up_form = new Sign_Up_Form();
         sign_up_form.GoToTheSignUpForm();
 
@@ -55,7 +55,7 @@ public class Open_New_SAVINGS_Acc_And_Check_Transaction_Details extends LoadTheD
     }
 
     @Test(priority = 3)
-    public void SignUpToTheWebsite() {
+    public void signUpToTheWebsite() {
         Sign_Up_Form sign_up_form = new Sign_Up_Form();
         sign_up_form.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
         sign_up_form.ClickOnRegisterSubmitButton();
@@ -66,9 +66,9 @@ public class Open_New_SAVINGS_Acc_And_Check_Transaction_Details extends LoadTheD
     }
 
     @Test(priority = 4)
-    public void GoToTheOpenNewAccountForm() {
+    public void goToTheOpenNewAccountForm() {
         Open_New_Account_Form open_new_account_form = new Open_New_Account_Form();
-        open_new_account_form.GoToTheOpenNewAccountForm();
+        open_new_account_form.goToTheOpenNewAccountForm();
 
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.openNewAccountTitle));
         String openNewAccountTitle = getDriver().findElement(open_new_account_form.openNewAccountTitle).getText();
@@ -76,11 +76,11 @@ public class Open_New_SAVINGS_Acc_And_Check_Transaction_Details extends LoadTheD
     }
 
     @Test(priority = 5)
-    public void OpenNewSavingsAccountAndCheckAccDetails() {
+    public void openNewSavingsAccountAndCheckAccDetails() {
         Open_New_Account_Form open_new_account_form = new Open_New_Account_Form();
-        open_new_account_form.OpenNewSavingsAccountAndDepositFromFirstAccount();
+        open_new_account_form.openNewSavingsAccountAndDepositFromFirstAccount();
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.elementToBeSelected(open_new_account_form.selectSavingsAccount));
-        open_new_account_form.ClickOnTheOpenNewAccountButton();
+        open_new_account_form.clickOnTheOpenNewAccountButton();
 
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.openNewAccountTitle));
         String openNewAccountTitle = getDriver().findElement(open_new_account_form.openNewAccountTitle).getText();
@@ -88,9 +88,9 @@ public class Open_New_SAVINGS_Acc_And_Check_Transaction_Details extends LoadTheD
     }
 
     @Test(priority = 6)
-    public void GoToTheAccountOverviewForm() {
+    public void goToTheAccountOverviewForm() {
         Accounts_Overview_Form accounts_overview_form = new Accounts_Overview_Form();
-        accounts_overview_form.GoToTheAccountsOverviewForm();
+        accounts_overview_form.goToTheAccountsOverviewForm();
 
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(accounts_overview_form.accountsOverviewForm));
         String accountsOverviewTitle = getDriver().findElement(accounts_overview_form.accountsOverviewTitle).getText();
@@ -98,10 +98,10 @@ public class Open_New_SAVINGS_Acc_And_Check_Transaction_Details extends LoadTheD
     }
 
     @Test(priority = 7)
-    public void SelectTheSecondAccAndCheckDetails() {
+    public void selectTheSecondAccAndCheckDetails() {
         Accounts_Overview_Form accounts_overview_form = new Accounts_Overview_Form();
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.elementToBeClickable(accounts_overview_form.secondAccount));
-        accounts_overview_form.SelectTheSecondAccount();
+        accounts_overview_form.selectTheSecondAccount();
 
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(accounts_overview_form.accountType));
         String accountType = getDriver().findElement(accounts_overview_form.accountType).getText();
@@ -109,11 +109,11 @@ public class Open_New_SAVINGS_Acc_And_Check_Transaction_Details extends LoadTheD
     }
 
     @Test(priority = 8)
-    public void CheckTransactionDetails() {
+    public void checkTransactionDetails() {
         // From SAVINGS Account the transaction type should be Credit
         Accounts_Overview_Form accounts_overview_form = new Accounts_Overview_Form();
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.elementToBeClickable(accounts_overview_form.transactionLink));
-        accounts_overview_form.CheckTransactionDetails();
+        accounts_overview_form.checkTransactionDetails();
 
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(accounts_overview_form.transactionType));
         String transactionType = getDriver().findElement(accounts_overview_form.transactionType).getText();

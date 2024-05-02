@@ -22,7 +22,7 @@ public class Log_In_To_The_Website_With_Wrong_Credentials extends LoadTheDriver 
     Duration timeout = Duration.ofSeconds(3);
 
     @BeforeTest
-    public void OpenTheWebsite() {
+    public void openTheWebsite() {
         new LoadTheDriver().loadTheWebsite(getDriver());
     }
 
@@ -34,7 +34,7 @@ public class Log_In_To_The_Website_With_Wrong_Credentials extends LoadTheDriver 
     }
 
     @Test(priority = 2)
-    public void LogInToTheWebsite() {
+    public void logInToTheWebsite() {
         Log_In_Form log_in_form = new Log_In_Form();
         log_in_form.LogInToTheWebsite(username, password);
         log_in_form.ClickOnTheLogInButton();

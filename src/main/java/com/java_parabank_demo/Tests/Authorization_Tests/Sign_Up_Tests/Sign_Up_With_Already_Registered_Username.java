@@ -30,7 +30,7 @@ public class Sign_Up_With_Already_Registered_Username extends LoadTheDriver {
     Duration timeout = Duration.ofSeconds(3);
 
     @BeforeTest
-    public void OpenTheWebsite() {
+    public void openTheWebsite() {
         new LoadTheDriver().loadTheWebsite(getDriver());
     }
 
@@ -42,7 +42,7 @@ public class Sign_Up_With_Already_Registered_Username extends LoadTheDriver {
     }
 
     @Test(priority = 2)
-    public void GoToTheSignUpForm() {
+    public void goToTheSignUpForm() {
         Sign_Up_Form sign_up_form = new Sign_Up_Form();
         sign_up_form.GoToTheSignUpForm();
 
@@ -52,7 +52,7 @@ public class Sign_Up_With_Already_Registered_Username extends LoadTheDriver {
     }
 
     @Test(priority = 3)
-    public void SignUpToTheWebsite() {
+    public void signUpToTheWebsite() {
         Sign_Up_Form sign_up_form = new Sign_Up_Form();
         sign_up_form.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
 
@@ -62,7 +62,7 @@ public class Sign_Up_With_Already_Registered_Username extends LoadTheDriver {
     }
 
     @Test(priority = 4)
-    public void LogOutFromTheAccount() {
+    public void logOutFromTheAccount() {
         Sign_Up_Form sign_up_form = new Sign_Up_Form();
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.elementToBeClickable(sign_up_form.logOutButton));
         sign_up_form.ClickOnLogOutButton();
@@ -73,7 +73,7 @@ public class Sign_Up_With_Already_Registered_Username extends LoadTheDriver {
     }
 
     @Test(priority = 5)
-    public void GoToTheSignUpFormAgain() {
+    public void goToTheSignUpFormAgain() {
         Sign_Up_Form sign_up_form = new Sign_Up_Form();
         sign_up_form.GoToTheSignUpForm();
 
@@ -83,7 +83,7 @@ public class Sign_Up_With_Already_Registered_Username extends LoadTheDriver {
     }
 
     @Test(priority = 5)
-    public void SignUpToTheWebsiteAgain() {
+    public void signUpToTheWebsiteAgain() {
         Sign_Up_Form sign_up_form = new Sign_Up_Form();
         sign_up_form.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
         sign_up_form.ClickOnRegisterSubmitButton();

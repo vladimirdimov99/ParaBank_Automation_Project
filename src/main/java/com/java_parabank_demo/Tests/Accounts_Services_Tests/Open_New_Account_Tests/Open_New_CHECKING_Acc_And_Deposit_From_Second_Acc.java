@@ -32,7 +32,7 @@ public class Open_New_CHECKING_Acc_And_Deposit_From_Second_Acc extends LoadTheDr
     Duration timeout = Duration.ofSeconds(3);
 
     @BeforeTest
-    public void OpenTheWebsite() {
+    public void openTheWebsite() {
         new LoadTheDriver().loadTheWebsite(getDriver());
     }
 
@@ -44,7 +44,7 @@ public class Open_New_CHECKING_Acc_And_Deposit_From_Second_Acc extends LoadTheDr
     }
 
     @Test(priority = 2)
-    public void LogInToTheWebsite() {
+    public void logInToTheWebsite() {
         Log_In_Form log_in_form = new Log_In_Form();
         log_in_form.LogInToTheWebsite(username, password);
 
@@ -54,9 +54,9 @@ public class Open_New_CHECKING_Acc_And_Deposit_From_Second_Acc extends LoadTheDr
     }
 
     @Test(priority = 3)
-    public void GoToTheOpenNewAccountForm() {
+    public void goToTheOpenNewAccountForm() {
         Open_New_Account_Form open_new_account_form = new Open_New_Account_Form();
-        open_new_account_form.GoToTheOpenNewAccountForm();
+        open_new_account_form.goToTheOpenNewAccountForm();
 
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.openNewAccountTitle));
         openNewAccountTitle = getDriver().findElement(open_new_account_form.openNewAccountTitle).getText();
@@ -64,11 +64,11 @@ public class Open_New_CHECKING_Acc_And_Deposit_From_Second_Acc extends LoadTheDr
     }
 
     @Test(priority = 4)
-    public void OpenNewCheckingAccountAndDepositFromSecondAccount() {
+    public void openNewCheckingAccountAndDepositFromSecondAccount() {
         Open_New_Account_Form open_new_account_form = new Open_New_Account_Form();
-        open_new_account_form.OpenNewCheckingAccountAndDepositFromSecondAccount();
+        open_new_account_form.openNewCheckingAccountAndDepositFromSecondAccount();
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.elementToBeSelected(open_new_account_form.selectTheSecondAccount));
-        open_new_account_form.ClickOnTheOpenNewAccountButton();
+        open_new_account_form.clickOnTheOpenNewAccountButton();
 
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.openNewAccountTitle));
         openNewAccountTitle = getDriver().findElement(open_new_account_form.openNewAccountTitle).getText();

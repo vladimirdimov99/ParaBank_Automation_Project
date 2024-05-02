@@ -34,7 +34,7 @@ public class Open_New_Checking_Acc_And_Pay_Bill_From_2nd_To_1st_Acc extends Load
     Duration timeout = Duration.ofSeconds(3);
 
     @BeforeTest
-    public void OpenTheWebsite() {
+    public void openTheWebsite() {
         new LoadTheDriver().loadTheWebsite(getDriver());
     }
 
@@ -46,7 +46,7 @@ public class Open_New_Checking_Acc_And_Pay_Bill_From_2nd_To_1st_Acc extends Load
     }
 
     @Test(priority = 2)
-    public void GoToTheSignUpForm() {
+    public void goToTheSignUpForm() {
         Sign_Up_Form sign_up_form = new Sign_Up_Form();
         sign_up_form.GoToTheSignUpForm();
 
@@ -56,7 +56,7 @@ public class Open_New_Checking_Acc_And_Pay_Bill_From_2nd_To_1st_Acc extends Load
     }
 
     @Test(priority = 3)
-    public void SignUpToTheWebsite() {
+    public void signUpToTheWebsite() {
         Sign_Up_Form sign_up_form = new Sign_Up_Form();
         sign_up_form.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
         sign_up_form.ClickOnRegisterSubmitButton();
@@ -67,9 +67,9 @@ public class Open_New_Checking_Acc_And_Pay_Bill_From_2nd_To_1st_Acc extends Load
     }
 
     @Test(priority = 4)
-    public void GoToTheOpenNewAccountForm() {
+    public void goToTheOpenNewAccountForm() {
         Open_New_Account_Form open_new_account_form = new Open_New_Account_Form();
-        open_new_account_form.GoToTheOpenNewAccountForm();
+        open_new_account_form.goToTheOpenNewAccountForm();
 
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.openNewAccountTitle));
         String openNewAccountTitle = getDriver().findElement(open_new_account_form.openNewAccountTitle).getText();
@@ -77,12 +77,12 @@ public class Open_New_Checking_Acc_And_Pay_Bill_From_2nd_To_1st_Acc extends Load
     }
 
     @Test(priority = 5)
-    public void OpenNewCheckingAccountAndDepositFromSecondAccount() {
+    public void openNewCheckingAccountAndDepositFromSecondAccount() {
         Open_New_Account_Form open_new_account_form = new Open_New_Account_Form();
         //Default drop menu is set to CHECKING account
-        open_new_account_form.OpenNewCheckingAccountAndDepositFromFirstAccount();
+        open_new_account_form.openNewCheckingAccountAndDepositFromFirstAccount();
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.elementToBeClickable(open_new_account_form.openNewAccountSubmitButton));
-        open_new_account_form.ClickOnTheOpenNewAccountButton();
+        open_new_account_form.clickOnTheOpenNewAccountButton();
 
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.createdNewAccountID));
         secondAcc = getDriver().findElement(open_new_account_form.createdNewAccountID).getText();
@@ -91,9 +91,9 @@ public class Open_New_Checking_Acc_And_Pay_Bill_From_2nd_To_1st_Acc extends Load
     }
 
     @Test(priority = 6)
-    public void GoToTheBillPayForm() {
+    public void goToTheBillPayForm() {
         Bill_Pay_Form bill_pay_form = new Bill_Pay_Form();
-        bill_pay_form.GoToTheBillPayForm();
+        bill_pay_form.goToTheBillPayForm();
 
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(bill_pay_form.billPayTitle));
         String billPayTitle = getDriver().findElement(bill_pay_form.billPayTitle).getText();
@@ -101,10 +101,10 @@ public class Open_New_Checking_Acc_And_Pay_Bill_From_2nd_To_1st_Acc extends Load
     }
 
     @Test(priority = 7)
-    public void EnterPayeeInformation() {
+    public void enterPayeeInformation() {
         Bill_Pay_Form bill_pay_form = new Bill_Pay_Form();
-        bill_pay_form.PayABillWithTheSecondAccount(firstName, address, city, state, zipCode, phone, secondAcc, secondAcc, amount);
-        bill_pay_form.ClickOnTheSendPaymentButton();
+        bill_pay_form.payABillWithTheSecondAccount(firstName, address, city, state, zipCode, phone, secondAcc, secondAcc, amount);
+        bill_pay_form.clickOnTheSendPaymentButton();
 
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(bill_pay_form.billPayTitle));
         String billPayTitle = getDriver().findElement(bill_pay_form.billPayTitle).getText();

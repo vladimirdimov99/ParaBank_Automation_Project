@@ -21,12 +21,12 @@ public class Bill_Pay_Form extends LoadTheDriver {
     By fromAccountDropMenuSecondAccount = By.xpath("//*[@id='rightPanel']/div/div[1]/form/table/tbody/tr[13]/td[2]/select/option[2]");
     public By billPayTitle = By.className("title");
 
-    public void GoToTheBillPayForm() {
+    public void goToTheBillPayForm() {
         getDriver().findElement(billPayButton).click();
         // Accounts Overview Form is displayed with all of the user's accounts and his Balance and Available Amount
     }
 
-    public void PayABillWithTheSecondAccount(String payeeName, String addressField, String cityField, String stateField,
+    public void payABillWithTheSecondAccount(String payeeName, String addressField, String cityField, String stateField,
                                              String zipCodeField, String phoneField, String account, String verifyAcc, String amount) {
         getDriver().findElement(payeeNameFieldLocator).click();
         getDriver().findElement(payeeNameFieldLocator).sendKeys(payeeName);
@@ -59,7 +59,7 @@ public class Bill_Pay_Form extends LoadTheDriver {
         getDriver().findElement(fromAccountDropMenuSecondAccount).click();
     }
 
-    public void ClickOnTheSendPaymentButton() {
+    public void clickOnTheSendPaymentButton() {
         getDriver().findElement(sendPaymentSubmitButton).click();
     }
 }

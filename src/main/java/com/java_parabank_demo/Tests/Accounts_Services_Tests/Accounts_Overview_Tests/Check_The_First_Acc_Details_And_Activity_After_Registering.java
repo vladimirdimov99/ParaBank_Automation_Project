@@ -32,7 +32,7 @@ public class Check_The_First_Acc_Details_And_Activity_After_Registering extends 
     Duration timeout = Duration.ofSeconds(3);
 
     @BeforeTest
-    public void OpenTheWebsite() {
+    public void openTheWebsite() {
         new LoadTheDriver().loadTheWebsite(getDriver());
     }
 
@@ -44,7 +44,7 @@ public class Check_The_First_Acc_Details_And_Activity_After_Registering extends 
     }
 
     @Test(priority = 2)
-    public void GoToTheSignUpForm() {
+    public void goToTheSignUpForm() {
         Sign_Up_Form sign_up_form = new Sign_Up_Form();
         sign_up_form.GoToTheSignUpForm();
 
@@ -54,7 +54,7 @@ public class Check_The_First_Acc_Details_And_Activity_After_Registering extends 
     }
 
     @Test(priority = 3)
-    public void SignUpToTheWebsite() {
+    public void signUpToTheWebsite() {
         Sign_Up_Form sign_up_form = new Sign_Up_Form();
         sign_up_form.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
         sign_up_form.ClickOnRegisterSubmitButton();
@@ -65,9 +65,9 @@ public class Check_The_First_Acc_Details_And_Activity_After_Registering extends 
     }
 
     @Test(priority = 4)
-    public void GoToTheAccountOverviewForm() {
+    public void goToTheAccountOverviewForm() {
         Accounts_Overview_Form accounts_overview_form = new Accounts_Overview_Form();
-        accounts_overview_form.GoToTheAccountsOverviewForm();
+        accounts_overview_form.goToTheAccountsOverviewForm();
 
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(accounts_overview_form.accountsOverviewForm));
         accountsOverviewTitle = getDriver().findElement(accounts_overview_form.accountsOverviewTitle).getText();
@@ -75,11 +75,11 @@ public class Check_The_First_Acc_Details_And_Activity_After_Registering extends 
     }
 
     @Test(priority = 5)
-    public void SelectTheFirstAccAndCheckDetails() {
+    public void selectTheFirstAccAndCheckDetails() {
         //The First Account type after registering should be a CHECKING Account
         Accounts_Overview_Form accounts_overview_form = new Accounts_Overview_Form();
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.elementToBeClickable(accounts_overview_form.firstAccount));
-        accounts_overview_form.SelectTheFirstAccount();
+        accounts_overview_form.selectTheFirstAccount();
 
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(accounts_overview_form.accountType));
         String accountType = getDriver().findElement(accounts_overview_form.accountType).getText();
@@ -87,12 +87,12 @@ public class Check_The_First_Acc_Details_And_Activity_After_Registering extends 
     }
 
     @Test(priority = 6)
-    public void CheckAccountActivity() {
+    public void checkAccountActivity() {
         // There should be no Transactions found since we just created our account
         // Activity Period and Transaction Type is left default on "All"
 
         Accounts_Overview_Form accounts_overview_form = new Accounts_Overview_Form();
-        accounts_overview_form.CheckAccountActivity();
+        accounts_overview_form.checkAccountActivity();
         new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(accounts_overview_form.transactionActivityMessage));
         String transactionActivityMessage = getDriver().findElement(accounts_overview_form.transactionActivityMessage).getText();
         Assert.assertEquals(transactionActivityMessage, "No transactions found.");

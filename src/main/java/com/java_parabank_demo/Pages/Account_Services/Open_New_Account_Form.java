@@ -2,7 +2,6 @@ package com.java_parabank_demo.Pages.Account_Services;
 
 import com.java_parabank_demo.utils.LoadTheDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 public class Open_New_Account_Form extends LoadTheDriver {
 
@@ -19,12 +18,12 @@ public class Open_New_Account_Form extends LoadTheDriver {
     public By openNewAccountForm = By.className("ng-scope");
     public By createdNewAccountID = By.id("newAccountId");
 
-    public void GoToTheOpenNewAccountForm() {
+    public void goToTheOpenNewAccountForm() {
         getDriver().findElement(openNewAccountButton).click();
         // Open New Account Form is displayed
     }
 
-    public void OpenNewCheckingAccountAndDepositFromSecondAccount() {
+    public void openNewCheckingAccountAndDepositFromSecondAccount() {
         getDriver().findElement(accountTypeDropMenuLocator).click();
         getDriver().findElement(selectCheckingAccount).click();
 
@@ -32,7 +31,7 @@ public class Open_New_Account_Form extends LoadTheDriver {
         getDriver().findElement(selectTheSecondAccount).click();
     }
 
-    public void OpenNewSavingsAccountAndDepositFromFirstAccount() {
+    public void openNewSavingsAccountAndDepositFromFirstAccount() {
         getDriver().findElement(accountTypeDropMenuLocator).click();
         getDriver().findElement(selectSavingsAccount).click();
 
@@ -40,7 +39,7 @@ public class Open_New_Account_Form extends LoadTheDriver {
         getDriver().findElement(selectTheFirstAccount).click();
     }
 
-    public void OpenNewCheckingAccountAndDepositFromFirstAccount() {
+    public void openNewCheckingAccountAndDepositFromFirstAccount() {
         getDriver().findElement(accountTypeDropMenuLocator).click();
         getDriver().findElement(selectCheckingAccount).click();
 
@@ -48,7 +47,7 @@ public class Open_New_Account_Form extends LoadTheDriver {
         getDriver().findElement(selectTheFirstAccount).click();
     }
 
-    public void ClickOnTheOpenNewAccountButton() {
+    public void clickOnTheOpenNewAccountButton() {
         getDriver().findElement(openNewAccountSubmitButton).click();
     }
 }

@@ -19,24 +19,24 @@ public class Accounts_Overview_Form extends LoadTheDriver {
     public By transactionActivityMessage = By.xpath("//*[@ng-if='showActivity']/p");
 
 
-    public void GoToTheAccountsOverviewForm() {
+    public void goToTheAccountsOverviewForm() {
         getDriver().findElement(accountsOverviewButton).click();
         // Accounts Overview Form is displayed with all of the user's accounts and his Balance and Available Amount
     }
 
-    public void SelectTheFirstAccount() {
+    public void selectTheFirstAccount() {
         getDriver().findElement(firstAccount).click();
     }
 
-    public void SelectTheSecondAccount() {
+    public void selectTheSecondAccount() {
         getDriver().findElement(secondAccount).click();
     }
 
-    public void CheckAccountActivity() {
+    public void checkAccountActivity() {
         getDriver().findElement(accountActivityGoButton).click();
     }
 
-    public void CheckTransactionDetails() {
+    public void checkTransactionDetails() {
         getDriver().findElement(transactionLink).click();
     }
 }
