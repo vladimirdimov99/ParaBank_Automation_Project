@@ -32,7 +32,7 @@ public class Request_Loan_And_Check_Loan_Acc_Details_From_newAccountID_LinkButto
 
     @BeforeTest
     public void OpenTheWebsite(){
-        new LoadTheDriver().LoadTheWebsite(getDriver());
+        new LoadTheDriver().loadTheWebsite(getDriver());
     }
 
     @Test(priority = 1)

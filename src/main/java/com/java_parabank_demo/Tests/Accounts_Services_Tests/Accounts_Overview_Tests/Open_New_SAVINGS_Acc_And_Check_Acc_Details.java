@@ -34,7 +34,7 @@ public class Open_New_SAVINGS_Acc_And_Check_Acc_Details extends LoadTheDriver{
 
     @BeforeTest
     public void OpenTheWebsite(){
-        new LoadTheDriver().LoadTheWebsite(getDriver());
+        new LoadTheDriver().loadTheWebsite(getDriver());
     }
 
     @Test(priority = 1)

@@ -35,7 +35,7 @@ public class Transfer_Funds_To_The_Same_Acc_With_Empty_Amount_Field extends Load
 
     @BeforeTest
     public void OpenTheWebsite() {
-        new LoadTheDriver().LoadTheWebsite(getDriver());
+        new LoadTheDriver().loadTheWebsite(getDriver());
     }
 
     @Test(priority = 1)

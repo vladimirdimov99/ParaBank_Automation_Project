@@ -33,7 +33,7 @@ public class Open_New_SAVINGS_Acc_And_Deposit_From_First_Acc extends LoadTheDriv
 
     @BeforeTest
     public void OpenTheWebsite() {
-        new LoadTheDriver().LoadTheWebsite(getDriver());
+        new LoadTheDriver().loadTheWebsite(getDriver());
     }
 
     @Test(priority = 1)

@@ -31,7 +31,7 @@ public class Sign_Up_With_Already_Registered_Username extends LoadTheDriver {
 
     @BeforeTest
     public void OpenTheWebsite() {
-        new LoadTheDriver().LoadTheWebsite(getDriver());
+        new LoadTheDriver().loadTheWebsite(getDriver());
     }
 
     @Test(priority = 1)

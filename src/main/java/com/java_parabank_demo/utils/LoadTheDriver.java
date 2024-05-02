@@ -19,7 +19,7 @@ public class LoadTheDriver {
         return driver;
     }
 
-    public void LoadTheWebsite(WebDriver driver) {
+    public void loadTheWebsite(WebDriver driver) {
         driver.get(websiteURL);
         driver.manage().window().maximize();
     }

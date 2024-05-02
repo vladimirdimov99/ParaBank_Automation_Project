@@ -33,7 +33,7 @@ public class Open_New_CHECKING_Acc_And_Deposit_From_Second_Acc extends LoadTheDr
 
     @BeforeTest
     public void OpenTheWebsite() {
-        new LoadTheDriver().LoadTheWebsite(getDriver());
+        new LoadTheDriver().loadTheWebsite(getDriver());
     }
 
     @Test(priority = 1)

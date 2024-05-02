@@ -33,7 +33,7 @@ public class Check_The_First_Acc_Details_And_Activity_After_Registering extends 
 
     @BeforeTest
     public void OpenTheWebsite() {
-        new LoadTheDriver().LoadTheWebsite(getDriver());
+        new LoadTheDriver().loadTheWebsite(getDriver());
     }
 
     @Test(priority = 1)

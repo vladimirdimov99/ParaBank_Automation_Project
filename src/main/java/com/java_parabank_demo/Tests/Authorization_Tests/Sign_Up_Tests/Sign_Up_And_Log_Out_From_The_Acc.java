@@ -31,7 +31,7 @@ public class Sign_Up_And_Log_Out_From_The_Acc extends LoadTheDriver {
 
     @BeforeTest
     public void OpenTheWebsite() {
-        new LoadTheDriver().LoadTheWebsite(getDriver());
+        new LoadTheDriver().loadTheWebsite(getDriver());
     }
 
     @Test(priority = 1)

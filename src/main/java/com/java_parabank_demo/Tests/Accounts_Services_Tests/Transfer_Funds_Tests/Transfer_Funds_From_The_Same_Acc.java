@@ -35,7 +35,7 @@ public class Transfer_Funds_From_The_Same_Acc extends LoadTheDriver {
 
     @BeforeTest
     public void OpenTheWebsite() {
-        new LoadTheDriver().LoadTheWebsite(getDriver());
+        new LoadTheDriver().loadTheWebsite(getDriver());
     }
 
     @Test(priority = 1)

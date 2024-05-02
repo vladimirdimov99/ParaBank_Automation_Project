@@ -35,7 +35,7 @@ public class Open_New_Checking_Acc_And_Pay_Bill_From_2nd_To_1st_Acc extends Load
 
     @BeforeTest
     public void OpenTheWebsite() {
-        new LoadTheDriver().LoadTheWebsite(getDriver());
+        new LoadTheDriver().loadTheWebsite(getDriver());
     }
 
     @Test(priority = 1)

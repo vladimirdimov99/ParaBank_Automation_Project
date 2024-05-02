@@ -23,7 +23,7 @@ public class Log_In_With_Empty_Username_And_Password_Fields extends LoadTheDrive
 
     @BeforeTest
     public void OpenTheWebsite() {
-        new LoadTheDriver().LoadTheWebsite(getDriver());
+        new LoadTheDriver().loadTheWebsite(getDriver());
     }
 
     @Test(priority = 1)
