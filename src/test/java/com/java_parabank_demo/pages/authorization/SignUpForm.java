@@ -25,39 +25,39 @@ public class SignUpForm extends TestBase {
     public By usernameTakenError = By.id("customer.username.errors");
 
     public void GoToTheSignUpForm (){
-        getDriver().findElement(registerButton).click();
+        driver().findElement(registerButton).click();
     }
 
     public void SignUpToTheWebsite(String firstName, String lastName, String address, String city, String state, String zipCode,
                                    String phone, String ssn, String username, String password, String confirmPW){
 
-        getDriver().findElement(firstNameField).sendKeys(firstName);
-        getDriver().findElement(lastNameField).sendKeys(lastName);
+        driver().findElement(firstNameField).sendKeys(firstName);
+        driver().findElement(lastNameField).sendKeys(lastName);
 
-        getDriver().findElement(addressField).sendKeys(address);
+        driver().findElement(addressField).sendKeys(address);
 
-        getDriver().findElement(cityField).sendKeys(city);
+        driver().findElement(cityField).sendKeys(city);
 
-        getDriver().findElement(stateField).sendKeys(state);
+        driver().findElement(stateField).sendKeys(state);
 
-        getDriver().findElement(zipCodeField).sendKeys(zipCode);
+        driver().findElement(zipCodeField).sendKeys(zipCode);
 
-        getDriver().findElement(phoneNumberField).sendKeys(phone);
+        driver().findElement(phoneNumberField).sendKeys(phone);
 
-        getDriver().findElement(SSNField).sendKeys(ssn);
+        driver().findElement(SSNField).sendKeys(ssn);
 
-        getDriver().findElement(userNameField).sendKeys(username);
+        driver().findElement(userNameField).sendKeys(username);
 
-        getDriver().findElement(setPasswordField).sendKeys(password);
+        driver().findElement(setPasswordField).sendKeys(password);
 
-        getDriver().findElement(confirmPWField).sendKeys(confirmPW);
+        driver().findElement(confirmPWField).sendKeys(confirmPW);
     }
 
     public void ClickOnRegisterSubmitButton(){
-        getDriver().findElement(registerSubmitButton).click();
+        driver().findElement(registerSubmitButton).click();
     }
 
     public void ClickOnLogOutButton(){
-        getDriver().findElement(logOutButton).click();
+        driver().findElement(logOutButton).click();
     }
 }

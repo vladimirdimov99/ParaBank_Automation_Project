@@ -46,7 +46,7 @@ public class BillPayTests extends TestBase {
 
     @Test(priority = 1)
     public void checkIfTheWebsiteURLIsCorrect() {
-        currentURL = getDriver().getCurrentUrl();
+        currentURL = driver.getCurrentUrl();
         expectedURL = "https://parabank.parasoft.com/parabank/index.htm";
         assertTrue(currentURL.contains(expectedURL));
     }
@@ -55,8 +55,8 @@ public class BillPayTests extends TestBase {
     public void goToTheSignUpForm() {
         signUpForm.GoToTheSignUpForm();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(signUpForm.signUpForm));
-        String signingUpIsEasyText = getDriver().findElement(signUpForm.signUpTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(signUpForm.signUpForm));
+        String signingUpIsEasyText = driver.findElement(signUpForm.signUpTitle).getText();
         assertEquals(signingUpIsEasyText, "Signing up is easy!");
     }
 
@@ -65,8 +65,8 @@ public class BillPayTests extends TestBase {
         signUpForm.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
         signUpForm.ClickOnRegisterSubmitButton();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(signUpForm.signUpTitle));
-        String welcomeMessage = getDriver().findElement(signUpForm.signUpTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(signUpForm.signUpTitle));
+        String welcomeMessage = driver().findElement(signUpForm.signUpTitle).getText();
         assertTrue(welcomeMessage.contains(username));
     }
 
@@ -74,8 +74,8 @@ public class BillPayTests extends TestBase {
     public void goToTheOpenNewAccountForm() {
         openNewAccountForm.goToTheOpenNewAccountForm();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(openNewAccountForm.openNewAccountTitle));
-        String openNewAccountTitle = getDriver().findElement(openNewAccountForm.openNewAccountTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(openNewAccountForm.openNewAccountTitle));
+        String openNewAccountTitle = driver.findElement(openNewAccountForm.openNewAccountTitle).getText();
         assertEquals(openNewAccountTitle, "Open New Account");
     }
 
@@ -83,12 +83,12 @@ public class BillPayTests extends TestBase {
     public void openNewCheckingAccountAndDepositFromSecondAccount() {
         //Default drop menu is set to CHECKING account
         openNewAccountForm.openNewCheckingAccountAndDepositFromFirstAccount();
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.elementToBeClickable(openNewAccountForm.openNewAccountSubmitButton));
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.elementToBeClickable(openNewAccountForm.openNewAccountSubmitButton));
         openNewAccountForm.clickOnTheOpenNewAccountButton();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(openNewAccountForm.createdNewAccountID));
-        secondAcc = getDriver().findElement(openNewAccountForm.createdNewAccountID).getText();
-        String openNewAccountTitle = getDriver().findElement(openNewAccountForm.openNewAccountTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(openNewAccountForm.createdNewAccountID));
+        secondAcc = driver.findElement(openNewAccountForm.createdNewAccountID).getText();
+        String openNewAccountTitle = driver.findElement(openNewAccountForm.openNewAccountTitle).getText();
         assertEquals(openNewAccountTitle, "Account Opened!");
     }
 
@@ -96,8 +96,8 @@ public class BillPayTests extends TestBase {
     public void goToTheBillPayForm() {
         billPayForm.goToTheBillPayForm();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(billPayForm.billPayTitle));
-        String billPayTitle = getDriver().findElement(billPayForm.billPayTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(billPayForm.billPayTitle));
+        String billPayTitle = driver.findElement(billPayForm.billPayTitle).getText();
         assertEquals(billPayTitle, "Bill Payment Service");
     }
 
@@ -106,8 +106,8 @@ public class BillPayTests extends TestBase {
         billPayForm.payABillWithTheSecondAccount(firstName, address, city, state, zipCode, phone, secondAcc, secondAcc, amount);
         billPayForm.clickOnTheSendPaymentButton();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(billPayForm.billPayTitle));
-        String billPayTitle = getDriver().findElement(billPayForm.billPayTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(billPayForm.billPayTitle));
+        String billPayTitle = driver.findElement(billPayForm.billPayTitle).getText();
         assertEquals(billPayTitle, "Bill Payment Complete");
     }
 

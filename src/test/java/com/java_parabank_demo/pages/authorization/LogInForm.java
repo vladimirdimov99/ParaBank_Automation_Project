@@ -13,15 +13,15 @@ public class LogInForm extends TestBase {
     public By loginErrorMessage = By.className("error");
 
     public void LogInToTheWebsite(String username, String password) {
-        getDriver().findElement(usernameLogInField).click();
-        getDriver().findElement(usernameLogInField).sendKeys(username);
+        driver().findElement(usernameLogInField).click();
+        driver().findElement(usernameLogInField).sendKeys(username);
 
-        getDriver().findElement(passwordLogInField).click();
-        getDriver().findElement(passwordLogInField).sendKeys(password);
+        driver().findElement(passwordLogInField).click();
+        driver().findElement(passwordLogInField).sendKeys(password);
 
     }
 
     public void ClickOnTheLogInButton() {
-        getDriver().findElement(loginSubmitButton).click();
+        driver().findElement(loginSubmitButton).click();
     }
 }

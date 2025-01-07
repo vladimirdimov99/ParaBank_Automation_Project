@@ -20,23 +20,23 @@ public class AccountsOverviewForm extends TestBase {
 
 
     public void goToTheAccountsOverviewForm() {
-        getDriver().findElement(accountsOverviewButton).click();
+        driver().findElement(accountsOverviewButton).click();
         // Accounts Overview Form is displayed with all of the user's accounts and his Balance and Available Amount
     }
 
     public void selectTheFirstAccount() {
-        getDriver().findElement(firstAccount).click();
+        driver().findElement(firstAccount).click();
     }
 
     public void selectTheSecondAccount() {
-        getDriver().findElement(secondAccount).click();
+        driver().findElement(secondAccount).click();
     }
 
     public void checkAccountActivity() {
-        getDriver().findElement(accountActivityGoButton).click();
+        driver().findElement(accountActivityGoButton).click();
     }
 
     public void checkTransactionDetails() {
-        getDriver().findElement(transactionLink).click();
+        driver().findElement(transactionLink).click();
     }
 }

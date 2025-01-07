@@ -33,6 +33,8 @@ public class TransferFundsToTheSameAccWithEmptyAmountField extends TestBase {
     private static String amount = "";
 
     Duration timeout = Duration.ofSeconds(3);
+    SignUpForm signUpForm = new SignUpForm();
+    TransferFundsForm transferFundsForm = new TransferFundsForm();
 
     @BeforeTest
     public void openTheWebsite() throws Exception {
@@ -42,29 +44,27 @@ public class TransferFundsToTheSameAccWithEmptyAmountField extends TestBase {
 
     @Test(priority = 1)
     public void checkIfTheWebsiteURLIsCorrect() {
-        currentURL = getDriver().getCurrentUrl();
+        currentURL = driver.getCurrentUrl();
         expectedURL = "https://parabank.parasoft.com/parabank/index.htm";
         assertEquals(currentURL, expectedURL);
     }
 
     @Test(priority = 2)
     public void goToTheSignUpForm() {
-        SignUpForm sign_up_form = new SignUpForm();
-        sign_up_form.GoToTheSignUpForm();
+        signUpForm.GoToTheSignUpForm();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(sign_up_form.signUpTitle));
-        String signingUpIsEasyText = getDriver().findElement(sign_up_form.signUpTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(signUpForm.signUpTitle));
+        String signingUpIsEasyText = driver.findElement(signUpForm.signUpTitle).getText();
         assertEquals(signingUpIsEasyText, "Signing up is easy!");
     }
 
     @Test(priority = 3)
     public void signUpToTheWebsite() {
-        SignUpForm sign_up_form = new SignUpForm();
-        sign_up_form.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
-        sign_up_form.ClickOnRegisterSubmitButton();
+        signUpForm.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
+        signUpForm.ClickOnRegisterSubmitButton();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(sign_up_form.signUpTitle));
-        String welcomeMessage = getDriver().findElement(sign_up_form.signUpTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(signUpForm.signUpTitle));
+        String welcomeMessage = driver.findElement(signUpForm.signUpTitle).getText();
         assertTrue(welcomeMessage.contains(username));
     }
 
@@ -73,40 +73,38 @@ public class TransferFundsToTheSameAccWithEmptyAmountField extends TestBase {
         OpenNewAccountForm open_new_account_form = new OpenNewAccountForm();
         open_new_account_form.goToTheOpenNewAccountForm();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.openNewAccountTitle));
-        String openNewAccountTitle = getDriver().findElement(open_new_account_form.openNewAccountTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.openNewAccountTitle));
+        String openNewAccountTitle = driver.findElement(open_new_account_form.openNewAccountTitle).getText();
         assertEquals(openNewAccountTitle, "Open New Account");
     }
 
     @Test(priority = 5)
     public void openNewCheckingAccount() {
-        OpenNewAccountForm open_new_account_form = new OpenNewAccountForm();
-        open_new_account_form.openNewCheckingAccountAndDepositFromFirstAccount();
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.elementToBeSelected(open_new_account_form.selectCheckingAccount));
-        open_new_account_form.clickOnTheOpenNewAccountButton();
+        OpenNewAccountForm openNewAccountForm = new OpenNewAccountForm();
+        openNewAccountForm.openNewCheckingAccountAndDepositFromFirstAccount();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.elementToBeSelected(openNewAccountForm.selectCheckingAccount));
+        openNewAccountForm.clickOnTheOpenNewAccountButton();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.openNewAccountTitle));
-        String openNewAccountTitle = getDriver().findElement(open_new_account_form.openNewAccountTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(openNewAccountForm.openNewAccountTitle));
+        String openNewAccountTitle = driver.findElement(openNewAccountForm.openNewAccountTitle).getText();
         assertEquals(openNewAccountTitle, "Account Opened!");
     }
 
     @Test(priority = 6)
     public void goToTheTransferFundsForm() {
-        TransferFundsForm transfer_funds_form = new TransferFundsForm();
-        transfer_funds_form.goToTheTransferFundsForm();
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(transfer_funds_form.transferFundsTitle));
-        String transferFundsTitle = getDriver().findElement(transfer_funds_form.transferFundsTitle).getText();
+        transferFundsForm.goToTheTransferFundsForm();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(transferFundsForm.transferFundsTitle));
+        String transferFundsTitle = driver.findElement(transferFundsForm.transferFundsTitle).getText();
         assertEquals(transferFundsTitle, "Transfer Funds");
     }
 
     @Test(priority = 7)
     public void transferFundsFromTheSameAccountWithEmptyAmountField() {
-        TransferFundsForm transfer_funds_form = new TransferFundsForm();
-        transfer_funds_form.transferFundsFromTheSameAccount(amount);
-        transfer_funds_form.clickOnTheTransferButton();
+        transferFundsForm.transferFundsFromTheSameAccount(amount);
+        transferFundsForm.clickOnTheTransferButton();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(transfer_funds_form.amountError));
-        String amountError = getDriver().findElement(transfer_funds_form.amountError).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(transferFundsForm.amountError));
+        String amountError = driver.findElement(transferFundsForm.amountError).getText();
         assertEquals(amountError, "The amount cannot be empty.");
     }
 

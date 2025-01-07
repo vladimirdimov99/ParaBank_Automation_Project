@@ -21,6 +21,7 @@ public class LogInToTheWebsite extends TestBase {
     String username = "growth77";
     String password = "test123";
     Duration timeout = Duration.ofSeconds(3);
+    LogInForm logInForm = new LogInForm();
 
     @BeforeTest
     public void openTheWebsite() throws Exception {
@@ -30,19 +31,18 @@ public class LogInToTheWebsite extends TestBase {
 
     @Test(priority = 1)
     public void checkIfTheWebsiteURLIsCorrect() {
-        currentURL = getDriver().getCurrentUrl();
+        currentURL = driver().getCurrentUrl();
         expectedURL = "https://parabank.parasoft.com/parabank/index.htm";
         assertEquals(currentURL, expectedURL);
     }
 
     @Test(priority = 2)
     public void logInToTheWebsite() {
-        LogInForm log_in_form = new LogInForm();
-        log_in_form.LogInToTheWebsite(username, password);
-        log_in_form.ClickOnTheLogInButton();
+        logInForm.LogInToTheWebsite(username, password);
+        logInForm.ClickOnTheLogInButton();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(log_in_form.welcomeMessageTextLocator));
-        String welcomeLogInMessage = getDriver().findElement(log_in_form.welcomeMessageTextLocator).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(logInForm.welcomeMessageTextLocator));
+        String welcomeLogInMessage = driver.findElement(logInForm.welcomeMessageTextLocator).getText();
         assertTrue(welcomeLogInMessage.contains(firstName + lastName));
     }
 

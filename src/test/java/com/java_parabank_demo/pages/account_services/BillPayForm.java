@@ -22,44 +22,44 @@ public class BillPayForm extends TestBase {
     public By billPayTitle = By.className("title");
 
     public void goToTheBillPayForm() {
-        getDriver().findElement(billPayButton).click();
+        driver().findElement(billPayButton).click();
         // Accounts Overview Form is displayed with all of the user's accounts and his Balance and Available Amount
     }
 
     public void payABillWithTheSecondAccount(String payeeName, String addressField, String cityField, String stateField,
                                              String zipCodeField, String phoneField, String account, String verifyAcc, String amount) {
-        getDriver().findElement(payeeNameFieldLocator).click();
-        getDriver().findElement(payeeNameFieldLocator).sendKeys(payeeName);
+        driver().findElement(payeeNameFieldLocator).click();
+        driver().findElement(payeeNameFieldLocator).sendKeys(payeeName);
 
-        getDriver().findElement(addressFieldLocator).click();
-        getDriver().findElement(addressFieldLocator).sendKeys(addressField);
+        driver().findElement(addressFieldLocator).click();
+        driver().findElement(addressFieldLocator).sendKeys(addressField);
 
-        getDriver().findElement(cityFieldLocator).click();
-        getDriver().findElement(cityFieldLocator).sendKeys(cityField);
+        driver().findElement(cityFieldLocator).click();
+        driver().findElement(cityFieldLocator).sendKeys(cityField);
 
-        getDriver().findElement(stateFieldLocator).click();
-        getDriver().findElement(stateFieldLocator).sendKeys(stateField);
+        driver().findElement(stateFieldLocator).click();
+        driver().findElement(stateFieldLocator).sendKeys(stateField);
 
-        getDriver().findElement(zipCodeFieldLocator).click();
-        getDriver().findElement(zipCodeFieldLocator).sendKeys(zipCodeField);
+        driver().findElement(zipCodeFieldLocator).click();
+        driver().findElement(zipCodeFieldLocator).sendKeys(zipCodeField);
 
-        getDriver().findElement(phoneFieldLocator).click();
-        getDriver().findElement(phoneFieldLocator).sendKeys(phoneField);
+        driver().findElement(phoneFieldLocator).click();
+        driver().findElement(phoneFieldLocator).sendKeys(phoneField);
 
-        getDriver().findElement(accountFieldLocator).click();
-        getDriver().findElement(accountFieldLocator).sendKeys(account);
+        driver().findElement(accountFieldLocator).click();
+        driver().findElement(accountFieldLocator).sendKeys(account);
 
-        getDriver().findElement(verifyAccountFieldLocator).click();
-        getDriver().findElement(verifyAccountFieldLocator).sendKeys(verifyAcc);
+        driver().findElement(verifyAccountFieldLocator).click();
+        driver().findElement(verifyAccountFieldLocator).sendKeys(verifyAcc);
 
-        getDriver().findElement(amountFieldLocator).click();
-        getDriver().findElement(amountFieldLocator).sendKeys(amount);
+        driver().findElement(amountFieldLocator).click();
+        driver().findElement(amountFieldLocator).sendKeys(amount);
 
-        getDriver().findElement(fromAccountDropMenuLocator).click();
-        getDriver().findElement(fromAccountDropMenuSecondAccount).click();
+        driver().findElement(fromAccountDropMenuLocator).click();
+        driver().findElement(fromAccountDropMenuSecondAccount).click();
     }
 
     public void clickOnTheSendPaymentButton() {
-        getDriver().findElement(sendPaymentSubmitButton).click();
+        driver().findElement(sendPaymentSubmitButton).click();
     }
 }

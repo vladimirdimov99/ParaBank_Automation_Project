@@ -30,7 +30,10 @@ public class CheckFirstAccDetailsAndActivityAfterRegistering extends TestBase {
     private static String username = "papagala2";
     private static String password = "test123";
     private static String confirmPW = "test123";
+
     Duration timeout = Duration.ofSeconds(3);
+    SignUpForm signUpForm = new SignUpForm();
+    AccountsOverviewForm accountsOverviewForm = new AccountsOverviewForm();
 
     @BeforeTest
     public void openTheWebsite() throws Exception {
@@ -40,51 +43,48 @@ public class CheckFirstAccDetailsAndActivityAfterRegistering extends TestBase {
 
     @Test(priority = 1)
     public void checkIfTheWebsiteURLIsCorrect() {
-        currentURL = getDriver().getCurrentUrl();
+        currentURL = driver.getCurrentUrl();
         expectedURL = "https://parabank.parasoft.com/parabank/index.htm";
         assertEquals(currentURL, expectedURL);
     }
 
     @Test(priority = 2)
     public void goToTheSignUpForm() {
-        SignUpForm sign_up_form = new SignUpForm();
-        sign_up_form.GoToTheSignUpForm();
+        signUpForm.GoToTheSignUpForm();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(sign_up_form.signUpForm));
-        String signingUpIsEasyText = getDriver().findElement(sign_up_form.signUpTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(signUpForm.signUpForm));
+        String signingUpIsEasyText = driver.findElement(signUpForm.signUpTitle).getText();
         assertEquals(signingUpIsEasyText, "Signing up is easy!");
     }
 
     @Test(priority = 3)
     public void signUpToTheWebsite() {
-        SignUpForm sign_up_form = new SignUpForm();
-        sign_up_form.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
-        sign_up_form.ClickOnRegisterSubmitButton();
+        signUpForm.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(sign_up_form.signUpTitle));
-        String welcomeMessage = getDriver().findElement(sign_up_form.signUpTitle).getText();
+        signUpForm.ClickOnRegisterSubmitButton();
+
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(signUpForm.signUpTitle));
+        String welcomeMessage = driver.findElement(signUpForm.signUpTitle).getText();
         assertTrue(welcomeMessage.contains(username));
     }
 
     @Test(priority = 4)
     public void goToTheAccountOverviewForm() {
-        AccountsOverviewForm accounts_overview_form = new AccountsOverviewForm();
-        accounts_overview_form.goToTheAccountsOverviewForm();
+        accountsOverviewForm.goToTheAccountsOverviewForm();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(accounts_overview_form.accountsOverviewForm));
-        accountsOverviewTitle = getDriver().findElement(accounts_overview_form.accountsOverviewTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(accountsOverviewForm.accountsOverviewForm));
+        accountsOverviewTitle = driver.findElement(accountsOverviewForm.accountsOverviewTitle).getText();
         assertEquals(accountsOverviewTitle, "Accounts Overview");
     }
 
     @Test(priority = 5)
     public void selectTheFirstAccAndCheckDetails() {
         //The First Account type after registering should be a CHECKING Account
-        AccountsOverviewForm accounts_overview_form = new AccountsOverviewForm();
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.elementToBeClickable(accounts_overview_form.firstAccount));
-        accounts_overview_form.selectTheFirstAccount();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.elementToBeClickable(accountsOverviewForm.firstAccount));
+        accountsOverviewForm.selectTheFirstAccount();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(accounts_overview_form.accountType));
-        String accountType = getDriver().findElement(accounts_overview_form.accountType).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(accountsOverviewForm.accountType));
+        String accountType = driver.findElement(accountsOverviewForm.accountType).getText();
         assertEquals(accountType, "CHECKING");
     }
 
@@ -92,11 +92,10 @@ public class CheckFirstAccDetailsAndActivityAfterRegistering extends TestBase {
     public void checkAccountActivity() {
         // There should be no Transactions found since we just created our account
         // Activity Period and Transaction Type is left default on "All"
+        accountsOverviewForm.checkAccountActivity();
 
-        AccountsOverviewForm accounts_overview_form = new AccountsOverviewForm();
-        accounts_overview_form.checkAccountActivity();
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(accounts_overview_form.transactionActivityMessage));
-        String transactionActivityMessage = getDriver().findElement(accounts_overview_form.transactionActivityMessage).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(accountsOverviewForm.transactionActivityMessage));
+        String transactionActivityMessage = driver.findElement(accountsOverviewForm.transactionActivityMessage).getText();
         assertEquals(transactionActivityMessage, "No transactions found.");
     }
 

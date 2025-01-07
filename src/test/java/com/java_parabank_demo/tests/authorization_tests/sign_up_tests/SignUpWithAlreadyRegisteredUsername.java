@@ -39,7 +39,7 @@ public class SignUpWithAlreadyRegisteredUsername extends TestBase {
 
     @Test(priority = 1)
     public void checkIfTheWebsiteURLIsCorrect() {
-        currentURL = getDriver().getCurrentUrl();
+        currentURL = driver.getCurrentUrl();
         expectedURL = "https://parabank.parasoft.com/parabank/index.htm";
         assertEquals(currentURL, expectedURL);
     }
@@ -48,8 +48,8 @@ public class SignUpWithAlreadyRegisteredUsername extends TestBase {
     public void goToTheSignUpForm() {
         signUpForm.GoToTheSignUpForm();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(signUpForm.signUpTitle));
-        String signingUpIsEasyText = getDriver().findElement(signUpForm.signUpTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(signUpForm.signUpTitle));
+        String signingUpIsEasyText = driver.findElement(signUpForm.signUpTitle).getText();
         assertEquals(signingUpIsEasyText, "Signing up is easy!");
     }
 
@@ -57,18 +57,18 @@ public class SignUpWithAlreadyRegisteredUsername extends TestBase {
     public void signUpToTheWebsite() {
         signUpForm.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(signUpForm.signUpTitle));
-        String welcomeMessage = getDriver().findElement(signUpForm.signUpTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(signUpForm.signUpTitle));
+        String welcomeMessage = driver.findElement(signUpForm.signUpTitle).getText();
         assertTrue(welcomeMessage.contains(username));
     }
 
     @Test(priority = 4)
     public void logOutFromTheAccount() {
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.elementToBeClickable(signUpForm.logOutButton));
+        new WebDriverWait(driver(), timeout).until(ExpectedConditions.elementToBeClickable(signUpForm.logOutButton));
         signUpForm.ClickOnLogOutButton();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(signUpForm.customerLoginTitle));
-        String customerLoginTitle = getDriver().findElement(signUpForm.customerLoginTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(signUpForm.customerLoginTitle));
+        String customerLoginTitle = driver.findElement(signUpForm.customerLoginTitle).getText();
         assertEquals(customerLoginTitle, "Customer Login");
     }
 
@@ -76,8 +76,8 @@ public class SignUpWithAlreadyRegisteredUsername extends TestBase {
     public void goToTheSignUpFormAgain() {
         signUpForm.GoToTheSignUpForm();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(signUpForm.signUpTitle));
-        String signingUpIsEasyText = getDriver().findElement(signUpForm.signUpTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(signUpForm.signUpTitle));
+        String signingUpIsEasyText = driver.findElement(signUpForm.signUpTitle).getText();
         assertEquals(signingUpIsEasyText, "Signing up is easy!");
     }
 
@@ -86,8 +86,8 @@ public class SignUpWithAlreadyRegisteredUsername extends TestBase {
         signUpForm.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
         signUpForm.ClickOnRegisterSubmitButton();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(signUpForm.usernameTakenError));
-        String usernameTakenError = getDriver().findElement(signUpForm.usernameTakenError).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(signUpForm.usernameTakenError));
+        String usernameTakenError = driver.findElement(signUpForm.usernameTakenError).getText();
         assertEquals(usernameTakenError, "This username already exists.");
     }
 

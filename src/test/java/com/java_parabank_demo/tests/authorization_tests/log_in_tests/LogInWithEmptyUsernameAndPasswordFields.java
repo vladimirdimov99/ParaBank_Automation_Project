@@ -21,6 +21,7 @@ public class LogInWithEmptyUsernameAndPasswordFields extends TestBase {
     String username = "growth77";
     String password = "test123";
     Duration timeout = Duration.ofSeconds(3);
+    LogInForm logInForm = new LogInForm();
 
     @BeforeTest
     public void openTheWebsite() throws Exception {
@@ -30,18 +31,17 @@ public class LogInWithEmptyUsernameAndPasswordFields extends TestBase {
 
     @Test(priority = 1)
     public void checkIfTheWebsiteURLIsCorrect() {
-        currentURL = getDriver().getCurrentUrl();
+        currentURL = driver.getCurrentUrl();
         expectedURL = "https://parabank.parasoft.com/parabank/index.htm";
         assertEquals(currentURL, expectedURL);
     }
 
     @Test(priority = 2)
     public void logInWithEmptyUsernameAndPassword() {
-        LogInForm log_in_form = new LogInForm();
-        log_in_form.ClickOnTheLogInButton();
+        logInForm.ClickOnTheLogInButton();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(log_in_form.loginErrorMessage));
-        String loginErrorMessage = getDriver().findElement(log_in_form.loginErrorMessage).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(logInForm.loginErrorMessage));
+        String loginErrorMessage = driver.findElement(logInForm.loginErrorMessage).getText();
         assertEquals(loginErrorMessage, "An internal error has occurred and has been logged.");
     }
 

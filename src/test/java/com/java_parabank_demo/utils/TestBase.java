@@ -61,7 +61,7 @@ public class TestBase {
         }
     }
 
-    public static WebDriver getDriver() {
+    public static WebDriver driver() {
         if (driver == null) {
             driver = new ChromeDriver();
         }

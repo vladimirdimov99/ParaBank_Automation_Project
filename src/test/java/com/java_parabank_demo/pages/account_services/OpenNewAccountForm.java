@@ -19,35 +19,35 @@ public class OpenNewAccountForm extends TestBase {
     public By createdNewAccountID = By.id("newAccountId");
 
     public void goToTheOpenNewAccountForm() {
-        getDriver().findElement(openNewAccountButton).click();
+        driver().findElement(openNewAccountButton).click();
         // Open New Account Form is displayed
     }
 
     public void openNewCheckingAccountAndDepositFromSecondAccount() {
-        getDriver().findElement(accountTypeDropMenuLocator).click();
-        getDriver().findElement(selectCheckingAccount).click();
+        driver().findElement(accountTypeDropMenuLocator).click();
+        driver().findElement(selectCheckingAccount).click();
 
-        getDriver().findElement(selectAccountDropMenuLocator).click();
-        getDriver().findElement(selectTheSecondAccount).click();
+        driver().findElement(selectAccountDropMenuLocator).click();
+        driver().findElement(selectTheSecondAccount).click();
     }
 
     public void openNewSavingsAccountAndDepositFromFirstAccount() {
-        getDriver().findElement(accountTypeDropMenuLocator).click();
-        getDriver().findElement(selectSavingsAccount).click();
+        driver().findElement(accountTypeDropMenuLocator).click();
+        driver().findElement(selectSavingsAccount).click();
 
-        getDriver().findElement(selectAccountDropMenuLocator).click();
-        getDriver().findElement(selectTheFirstAccount).click();
+        driver().findElement(selectAccountDropMenuLocator).click();
+        driver().findElement(selectTheFirstAccount).click();
     }
 
     public void openNewCheckingAccountAndDepositFromFirstAccount() {
-        getDriver().findElement(accountTypeDropMenuLocator).click();
-        getDriver().findElement(selectCheckingAccount).click();
+        driver().findElement(accountTypeDropMenuLocator).click();
+        driver().findElement(selectCheckingAccount).click();
 
-        getDriver().findElement(selectAccountDropMenuLocator).click();
-        getDriver().findElement(selectTheFirstAccount).click();
+        driver().findElement(selectAccountDropMenuLocator).click();
+        driver().findElement(selectTheFirstAccount).click();
     }
 
     public void clickOnTheOpenNewAccountButton() {
-        getDriver().findElement(openNewAccountSubmitButton).click();
+        driver().findElement(openNewAccountSubmitButton).click();
     }
 }

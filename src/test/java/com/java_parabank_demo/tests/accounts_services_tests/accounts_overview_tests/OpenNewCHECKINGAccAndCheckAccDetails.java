@@ -32,6 +32,9 @@ public class OpenNewCHECKINGAccAndCheckAccDetails extends TestBase {
     private static String confirmPW = "test123";
 
     Duration timeout = Duration.ofSeconds(3);
+    SignUpForm signUpForm = new SignUpForm();
+    OpenNewAccountForm openNewAccountForm = new OpenNewAccountForm();
+    AccountsOverviewForm accountsOverviewForm = new AccountsOverviewForm();
 
     @BeforeTest
     public void openTheWebsite() throws Exception {
@@ -48,65 +51,61 @@ public class OpenNewCHECKINGAccAndCheckAccDetails extends TestBase {
 
     @Test(priority = 2)
     public void goToTheSignUpForm() {
-        SignUpForm sign_up_form = new SignUpForm();
-        sign_up_form.GoToTheSignUpForm();
+        signUpForm.GoToTheSignUpForm();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(sign_up_form.signUpForm));
-        String signingUpIsEasyText = getDriver().findElement(sign_up_form.signUpTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(signUpForm.signUpForm));
+        String signingUpIsEasyText = driver.findElement(signUpForm.signUpTitle).getText();
         assertEquals(signingUpIsEasyText, "Signing up is easy!");
     }
 
     @Test(priority = 3)
     public void signUpToTheWebsite() {
-        SignUpForm sign_up_form = new SignUpForm();
-        sign_up_form.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
-        sign_up_form.ClickOnRegisterSubmitButton();
+        signUpForm.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(sign_up_form.signUpTitle));
-        String welcomeMessage = getDriver().findElement(sign_up_form.signUpTitle).getText();
+        signUpForm.ClickOnRegisterSubmitButton();
+
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(signUpForm.signUpTitle));
+        String welcomeMessage = driver.findElement(signUpForm.signUpTitle).getText();
         assertTrue(welcomeMessage.contains(username));
     }
 
     @Test(priority = 4)
     public void goToTheOpenNewAccountForm() {
-        OpenNewAccountForm open_new_account_form = new OpenNewAccountForm();
-        open_new_account_form.goToTheOpenNewAccountForm();
+        openNewAccountForm.goToTheOpenNewAccountForm();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.openNewAccountTitle));
-        String openNewAccountTitle = getDriver().findElement(open_new_account_form.openNewAccountTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(openNewAccountForm.openNewAccountTitle));
+        String openNewAccountTitle = driver.findElement(openNewAccountForm.openNewAccountTitle).getText();
         assertEquals(openNewAccountTitle, "Open New Account");
     }
 
     @Test(priority = 5)
     public void openNewCheckingAccountAndCheckAccDetails() {
-        OpenNewAccountForm open_new_account_form = new OpenNewAccountForm();
-        open_new_account_form.openNewCheckingAccountAndDepositFromFirstAccount();
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.elementToBeSelected(open_new_account_form.selectCheckingAccount));
-        open_new_account_form.clickOnTheOpenNewAccountButton();
+        openNewAccountForm.openNewCheckingAccountAndDepositFromFirstAccount();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.openNewAccountTitle));
-        String openNewAccountTitle = getDriver().findElement(open_new_account_form.openNewAccountTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.elementToBeSelected(openNewAccountForm.selectCheckingAccount));
+        openNewAccountForm.clickOnTheOpenNewAccountButton();
+
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(openNewAccountForm.openNewAccountTitle));
+        String openNewAccountTitle = driver.findElement(openNewAccountForm.openNewAccountTitle).getText();
         assertEquals(openNewAccountTitle, "Account Opened!");
     }
 
     @Test(priority = 6)
     public void goToTheAccountOverviewForm() {
-        AccountsOverviewForm accounts_overview_form = new AccountsOverviewForm();
-        accounts_overview_form.goToTheAccountsOverviewForm();
+        accountsOverviewForm.goToTheAccountsOverviewForm();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(accounts_overview_form.accountsOverviewForm));
-        String accountsOverviewTitle = getDriver().findElement(accounts_overview_form.accountsOverviewTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(accountsOverviewForm.accountsOverviewForm));
+        String accountsOverviewTitle = driver.findElement(accountsOverviewForm.accountsOverviewTitle).getText();
         assertEquals(accountsOverviewTitle, "Accounts Overview");
     }
 
     @Test(priority = 7)
     public void selectTheSecondAccAndCheckDetails() {
-        AccountsOverviewForm accounts_overview_form = new AccountsOverviewForm();
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.elementToBeClickable(accounts_overview_form.secondAccount));
-        accounts_overview_form.selectTheSecondAccount();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.elementToBeClickable(accountsOverviewForm.secondAccount));
+        accountsOverviewForm.selectTheSecondAccount();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(accounts_overview_form.accountType));
-        String accountType = getDriver().findElement(accounts_overview_form.accountType).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(accountsOverviewForm.accountType));
+        String accountType = driver.findElement(accountsOverviewForm.accountType).getText();
         assertEquals(accountType, "CHECKING");
     }
 

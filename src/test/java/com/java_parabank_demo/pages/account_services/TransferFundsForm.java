@@ -17,17 +17,17 @@ public class TransferFundsForm extends TestBase {
 
 
     public void goToTheTransferFundsForm() {
-        getDriver().findElement(transferFundsButton).click();
+        driver().findElement(transferFundsButton).click();
     }
 
     public void transferFundsFromTheSameAccount(String amount) {
-        getDriver().findElement(fromAccountId).click();
-        getDriver().findElement(toAccountId).click();
-        getDriver().findElement(amountField).click();
-        getDriver().findElement(amountField).sendKeys(amount);
+        driver().findElement(fromAccountId).click();
+        driver().findElement(toAccountId).click();
+        driver().findElement(amountField).click();
+        driver().findElement(amountField).sendKeys(amount);
     }
 
     public void clickOnTheTransferButton() {
-        getDriver().findElement(transferButton).click();
+        driver().findElement(transferButton).click();
     }
 }

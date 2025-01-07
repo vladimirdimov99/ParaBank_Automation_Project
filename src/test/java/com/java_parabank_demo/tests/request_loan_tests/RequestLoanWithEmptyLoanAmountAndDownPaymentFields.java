@@ -41,7 +41,7 @@ public class RequestLoanWithEmptyLoanAmountAndDownPaymentFields extends TestBase
 
     @Test(priority = 1)
     public void checkIfTheWebsiteURLIsCorrect() {
-        currentURL = getDriver().getCurrentUrl();
+        currentURL = driver.getCurrentUrl();
         expectedURL = "https://parabank.parasoft.com/parabank/index.htm";
         assertEquals(currentURL, expectedURL);
     }
@@ -50,8 +50,8 @@ public class RequestLoanWithEmptyLoanAmountAndDownPaymentFields extends TestBase
     public void goToTheSignUpForm() {
         signUpForm.GoToTheSignUpForm();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(signUpForm.signUpTitle));
-        String signingUpIsEasyText = getDriver().findElement(signUpForm.signUpTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(signUpForm.signUpTitle));
+        String signingUpIsEasyText = driver.findElement(signUpForm.signUpTitle).getText();
         assertEquals(signingUpIsEasyText, "Signing up is easy!");
     }
 
@@ -60,26 +60,26 @@ public class RequestLoanWithEmptyLoanAmountAndDownPaymentFields extends TestBase
         signUpForm.SignUpToTheWebsite(firstName, lastName, address, city, state, zipCode, phone, ssn, username, password, confirmPW);
         signUpForm.ClickOnRegisterSubmitButton();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(signUpForm.signUpTitle));
-        String welcomeMessage = getDriver().findElement(signUpForm.signUpTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(signUpForm.signUpTitle));
+        String welcomeMessage = driver.findElement(signUpForm.signUpTitle).getText();
         assertTrue(welcomeMessage.contains(username));
     }
 
     @Test(priority = 4)
     public void goToTheRequestLoanForm() {
         requestLoanForm.goToTheRequestLoanForm();
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(requestLoanForm.requestLoanTitle));
-        String requestLoanTitle = getDriver().findElement(requestLoanForm.requestLoanTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(requestLoanForm.requestLoanTitle));
+        String requestLoanTitle = driver.findElement(requestLoanForm.requestLoanTitle).getText();
         assertEquals(requestLoanTitle, "Apply for a Loan");
     }
 
     @Test(priority = 5)
     public void requestLoanWithEmptyLoanAmountAndDownPaymentFields() {
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.elementToBeClickable(requestLoanForm.applyNowButton));
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.elementToBeClickable(requestLoanForm.applyNowButton));
         requestLoanForm.clickOnApplyNowButton();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(requestLoanForm.errorMessage));
-        String errorMessage = getDriver().findElement(requestLoanForm.errorMessage).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(requestLoanForm.errorMessage));
+        String errorMessage = driver.findElement(requestLoanForm.errorMessage).getText();
         assertEquals(errorMessage, "An internal error has occurred and has been logged.");
     }
 

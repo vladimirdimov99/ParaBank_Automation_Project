@@ -30,7 +30,10 @@ public class OpenNewCHECKINGAccAndDepositFromSecondAcc extends TestBase {
     private static String username = "growth44";
     private static String password = "test123";
     private static String confirmPW = "test123";
+
     Duration timeout = Duration.ofSeconds(3);
+    LogInForm logInForm = new LogInForm();
+    OpenNewAccountForm openNewAccountForm = new OpenNewAccountForm();
 
     @BeforeTest
     public void openTheWebsite() throws Exception {
@@ -40,40 +43,38 @@ public class OpenNewCHECKINGAccAndDepositFromSecondAcc extends TestBase {
 
     @Test(priority = 1)
     public void checkIfTheWebsiteURLIsCorrect() {
-        currentURL = getDriver().getCurrentUrl();
+        currentURL = driver.getCurrentUrl();
         expectedURL = "https://parabank.parasoft.com/parabank/index.htm";
         assertEquals(currentURL, expectedURL);
     }
 
     @Test(priority = 2)
     public void logInToTheWebsite() {
-        LogInForm log_in_form = new LogInForm();
-        log_in_form.LogInToTheWebsite(username, password);
+        logInForm.LogInToTheWebsite(username, password);
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(log_in_form.welcomeMessageTextLocator));
-        String welcomeLogInMessage = getDriver().findElement(log_in_form.welcomeMessageTextLocator).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(logInForm.welcomeMessageTextLocator));
+        String welcomeLogInMessage = driver.findElement(logInForm.welcomeMessageTextLocator).getText();
         assertTrue(welcomeLogInMessage.contains(firstName + lastName));
     }
 
     @Test(priority = 3)
     public void goToTheOpenNewAccountForm() {
-        OpenNewAccountForm open_new_account_form = new OpenNewAccountForm();
-        open_new_account_form.goToTheOpenNewAccountForm();
+        openNewAccountForm.goToTheOpenNewAccountForm();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.openNewAccountTitle));
-        openNewAccountTitle = getDriver().findElement(open_new_account_form.openNewAccountTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(openNewAccountForm.openNewAccountTitle));
+        openNewAccountTitle = driver.findElement(openNewAccountForm.openNewAccountTitle).getText();
         assertEquals(openNewAccountTitle, "Open New Account");
     }
 
     @Test(priority = 4)
     public void openNewCheckingAccountAndDepositFromSecondAccount() {
-        OpenNewAccountForm open_new_account_form = new OpenNewAccountForm();
-        open_new_account_form.openNewCheckingAccountAndDepositFromSecondAccount();
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.elementToBeSelected(open_new_account_form.selectTheSecondAccount));
-        open_new_account_form.clickOnTheOpenNewAccountButton();
+        openNewAccountForm.openNewCheckingAccountAndDepositFromSecondAccount();
 
-        new WebDriverWait(getDriver(), timeout).until(ExpectedConditions.presenceOfElementLocated(open_new_account_form.openNewAccountTitle));
-        openNewAccountTitle = getDriver().findElement(open_new_account_form.openNewAccountTitle).getText();
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.elementToBeSelected(openNewAccountForm.selectTheSecondAccount));
+        openNewAccountForm.clickOnTheOpenNewAccountButton();
+
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.presenceOfElementLocated(openNewAccountForm.openNewAccountTitle));
+        openNewAccountTitle = driver.findElement(openNewAccountForm.openNewAccountTitle).getText();
         assertEquals(openNewAccountTitle, "Account Opened!");
     }
 
